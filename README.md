@@ -42,3 +42,4 @@ The frontend is a single-page website rendered through an `Express.js` route wit
 - [The `node-postgres` documentation.](https://node-postgres.com/)
 - [The `Express.js` documentation.](https://expressjs.com/)
 - [`Typewriter.js`](https://safi.me.uk/typewriterjs/) and the corresponding [GitHub repository](https://github.com/tameemsafi/typewriterjs).
+- [`Odometer.js`.](https://github.hubspot.com/odometer/docs/welcome/)
