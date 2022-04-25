@@ -2,6 +2,8 @@
 
 This repository contains all the project files for the third iteration of my website. In this iteration, I will keep the frontend to a single page and explore the GitHub API, pulling project metadata into a database, and feeding that data to the frontend to be rendered in a table.
 
+Created by **lachldw** at AWS.
+
 ## Framework Stack
 
 There will be 4 main components to my website and each component will serve a different purpose. In terms of the development phases, this will also serve as the order in which each component should be designed, from 1 to 4.
@@ -34,3 +36,8 @@ The GitHub cronjob's main purpose is to act as a script that can be called by th
 The frontend is a single-page website rendered through an `Express.js` route with associated logic pulling from the database server. A single-page architecture keeps things simple. All other routes in the application's frontend should be authenticated routes, hidden behind some sort of authentication logic, if they exist - highly unlikely given that there isn't really much of a reason to have login logic, unless I want to set up Prometheus + Grafana monitoring.
 
 *Could the frontend be done in* `Next.js` *instead? Expore and learn the* `Next.js` *framework and find out if this is possible.*
+
+## Useful Links
+
+- [The `node-postgres` documentation.](https://node-postgres.com/)
+- [The `Express.js` documentation.](https://expressjs.com/)
