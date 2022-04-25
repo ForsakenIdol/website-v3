@@ -8,6 +8,12 @@ Created by **lachldw** at AWS.
 
 There will be 4 main components to my website and each component will serve a different purpose. In terms of the development phases, this will also serve as the order in which each component should be designed, from 1 to 4.
 
+### 0. Overall
+
+**Stack**: Kubernetes / Docker
+
+All the components of this website will be hosted through Kubernetes.
+
 ### 1. Database
 
 **Stack**: PostgreSQL
