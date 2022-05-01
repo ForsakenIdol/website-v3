@@ -5,5 +5,6 @@ import os
 g = GitHub_Initializer(os.environ["GITHUB_PAN"])
 
 # Test to see if this works
+# Should print repo names
 for repo in g.get_user().get_repos():
     print(repo.name)
