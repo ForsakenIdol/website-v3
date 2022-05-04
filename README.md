@@ -50,3 +50,4 @@ The frontend is a single-page website rendered through an `Express.js` route wit
 - [`Typewriter.js`](https://safi.me.uk/typewriterjs/) and the corresponding [GitHub repository](https://github.com/tameemsafi/typewriterjs).
 - [`Odometer.js`.](https://github.hubspot.com/odometer/docs/welcome/)
 - [A cool way to do single-page "scrolling" navigation in JavaScript.](https://www.turnwall.com/articles/adding-single-page-scrolling-navigation-to-your-site/)
+-   [Kubegres, a solution for automatic PostgreSQL cluster replication.](https://www.kubegres.io/doc/getting-started.html)

@@ -8,3 +8,17 @@ g = GitHub_Initializer(os.environ["GITHUB_PAN"])
 # Should print repo names
 for repo in g.get_user().get_repos():
     print(repo.name)
+    print(repo.owner)
+    print(repo.created_at)
+    print(repo.homepage) # This does not link to the repository page, unless it is the special README page.
+    print("\n")
+
+
+
+"""
+---------- MAIN BODY OF CRONJOB ----------
+
+Pull all the repository information using the unique GITHUB_PAN environment variable.
+This needs to be passed in the Kubernetes cronjob spec.
+Imports repository information to the PostgreSQL database in the same cluster.
+"""
