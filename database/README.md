@@ -4,7 +4,7 @@ The database for this website runs off PostgreSQL. This document will summarise 
 
 ### Terminal Workflow
 
-At terminal boot...
+At MacOS terminal boot...
 
 1. `pgsql` aliases to `/Library/PostgreSQL/14/scripts/runpsql.sh`, which runs the script to connect to the PostgreSQL database.
 2. Use the defaults that `pgsql` provides and enter the user password at the end.
