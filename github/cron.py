@@ -15,4 +15,4 @@ Imports repository information to the PostgreSQL database in the same cluster.
 
 for repo in g.get_user().get_repos():
     # Of note: `repo.homepage` does not link to the repository page, unless it is the special README page.
-    print([repo.owner.id, repo.owner.name, repo.name, repo.created_at, repo.description, repo.url, repo.private])
+    print([repo.id, repo.name, repo.created_at, repo.description, repo.url, repo.private])
