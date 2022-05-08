@@ -1,5 +1,6 @@
 -- This file defines the schema for the GitHub table in the website database.
 -- The website database cannot be created by a PostgreSQL dump.
+-- The database needs to be created, and the SQL dump targeted at that database.
 
 DROP TABLE IF EXISTS github;
 CREATE TABLE github (
