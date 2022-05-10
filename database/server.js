@@ -11,7 +11,7 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT $1::text as message', ['Hello World!'], (err, res) => {
-    console.log(err ? err.stack : res.rows[0].message) // Hello World!
+client.query('SELECT store_id, last_update FROM store', (err, res) => {
+    console.log(err ? err.stack : res.rows)
     client.end()
   })
