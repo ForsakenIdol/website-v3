@@ -4,6 +4,32 @@ kind: Namespace
 metadata:
   name: pg
 ---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: pg
+  name: database-initialization-script
+data:
+  config.sql: |
+    DROP TABLE IF EXISTS github;
+    CREATE TABLE github (
+        repo_id INT PRIMARY KEY,
+        repo_name VARCHAR (256) NOT NULL,
+        created_at TIMESTAMP NOT NULL,
+        description TEXT,
+        url TEXT NOT NULL,
+        private BOOLEAN NOT NULL
+    );
+
+    INSERT INTO github VALUES (
+        463741050,
+        'db_cont_test',
+        '2022-02-26 03:17:36+00',
+        'A simple 2-service setup to practise management of multiple containers in a project.',
+        'https://api.github.com/repos/lachldwaws/db_cont_test',
+        false
+    );
+---
 # Persistent Volume Claim for the Postgres container.
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -54,10 +80,20 @@ spec:
         - name: database-storage
           # The mount path is where the postgres database is stored by default.
           mountPath: /var/lib/postgresql/data
+          # This db script will be run in the POSTGRES_DB database we specified above.
+        - name: database-initialization-script
+          mountPath: /docker-entrypoint-initdb.d/config.sql
+          subPath: config.sql
       volumes:
       - name: database-storage
         persistentVolumeClaim:
           claimName: pg-claim
+      - name: database-initialization-script
+        configMap:
+            name: database-initialization-script
+            items:
+              - key: config.sql
+                path: config.sql
 ---
 apiVersion: v1
 kind: Service
