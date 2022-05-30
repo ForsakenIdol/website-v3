@@ -2,12 +2,26 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: postgres
+  name: pg
+---
+# Persistent Volume Claim for the Postgres container.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: pg
+  name: pg-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: gp2
+  resources:
+    requests:
+      storage: 1Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: postgres
+  namespace: pg
   name: dep-postgres
 spec:
   selector:
@@ -25,16 +39,31 @@ spec:
         imagePullPolicy: Always
         env:
         - name: POSTGRES_PASSWORD
-          value: "xdlmaotrash"
+          value: "fakepasswordhaha"
+        - name: POSTGRES_DB
+          value: "website"
+          # We need to specify a different directory for the postgresql files than the default if we want to mount a volume
+          # to the /var/lib/postgresql/data directory.
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
         ports:
-          - containerPort: 5432
-            name: postgres-port
+        - containerPort: 5432
+          name: postgres-port
+        volumeMounts:
+          # This name is the name of the volume below. This is not arbitrary.
+        - name: database-storage
+          # The mount path is where the postgres database is stored by default.
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: database-storage
+        persistentVolumeClaim:
+          claimName: pg-claim
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: postgres
-  name: service-postgres
+  namespace: pg
+  name: postgres
 spec:
   selector:
     app.kubernetes.io/name: pod-postgres
@@ -43,4 +72,5 @@ spec:
       port: 5432
       targetPort: 5432
       protocol: TCP
+  type: NodePort
 ---
