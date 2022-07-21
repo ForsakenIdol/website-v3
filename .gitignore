@@ -5,3 +5,7 @@ venv/
 # JavaScript
 
 node_modules/
+
+# General
+
+*credentials.yaml

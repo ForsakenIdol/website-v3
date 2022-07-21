@@ -4,6 +4,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  namespace: pg
   name: pod-nodejs
 spec:
   containers:

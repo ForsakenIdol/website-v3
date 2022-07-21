@@ -1,0 +1,5 @@
+# Namespace for all the database and middleware files. We put this in a separate file because file 2 is .gitignore'd.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pg
