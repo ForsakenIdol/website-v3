@@ -1,0 +1,58 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: pg
+  name: database-connection-script
+data:
+  # The 'pg' library will pull Client parameters from the environment if we don't specify them as arguments.
+  # We opt to provide the password in this way.
+  server.js: |
+    const { Client } = require('pg');
+
+    const client = new Client({
+        user: 'postgres',
+        host: 'postgres-service.pg',
+        database: 'website',
+        port: 5432
+    });
+
+    client.connect();
+
+    client.query('SELECT * FROM github;', (err, res) => {
+        console.log(err ? err.stack : res.rows)
+        client.end()
+      });
+---
+# Right now, we're just making a standalone pod,
+# but eventually we'll wrap it in a 1-count deployment and service for our frontend.
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: pg
+  name: pod-nodejs
+spec:
+  containers:
+  - name: container-nodejs
+    image: node:18 # We opt not for the Alpine build since I do need some editing tools to test
+    command: ["sleep"]
+    args: ["6000"]
+    env:
+      # We pull the password from the 2_credentials secret created previously.
+      - name: PGPASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: postgres-credentials
+            key: POSTGRES_PASSWORD
+    volumeMounts:
+    - name: database-connection-script
+      mountPath: /scripts/server.js
+      subPath: server.js
+  volumes:
+  - name: database-connection-script
+    configMap:
+        name: database-connection-script
+        items:
+          - key: server.js
+            path: server.js
+---

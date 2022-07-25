@@ -16,6 +16,8 @@ data:
         private BOOLEAN NOT NULL
     );
 
+    -- Sample data
+
     INSERT INTO github VALUES (
         463741050,
         'db_cont_test',
@@ -23,6 +25,15 @@ data:
         'A simple 2-service setup to practise management of multiple containers in a project.',
         'https://api.github.com/repos/lachldwaws/db_cont_test',
         false
+    );
+
+    INSERT INTO github VALUES (
+        463741051,
+        'trash_thing',
+        '2022-02-21 07:15:22+00',
+        'LMAO this project sucks do not even try looking at it hahaha',
+        'https://api.github.com/repos/lachldwaws/trash_thing',
+        true
     );
 ---
 # Persistent Volume Claim for the Postgres container.
@@ -59,7 +70,7 @@ spec:
         image: postgres:14.3
         imagePullPolicy: Always
         env:
-        # We pull the password from the credentials secret created previously.
+        # We pull the password from the 2_credentials secret created previously.
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
