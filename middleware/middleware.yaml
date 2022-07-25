@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  namespace: pg
+  namespace: website
   name: database-connection-script
 data:
   # The 'pg' library will pull Client parameters from the environment if we don't specify them as arguments.
@@ -12,7 +12,7 @@ data:
 
     const client = new Client({
         user: 'postgres',
-        host: 'postgres-service.pg',
+        host: 'postgres-service.website',
         database: 'website',
         port: 5432
     });
@@ -29,7 +29,7 @@ data:
 apiVersion: v1
 kind: Pod
 metadata:
-  namespace: pg
+  namespace: website
   name: pod-nodejs
 spec:
   containers:
