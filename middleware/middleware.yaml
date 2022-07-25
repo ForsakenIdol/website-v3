@@ -6,13 +6,12 @@ metadata:
   name: database-connection-script
 data:
   # The 'pg' library will pull Client parameters from the environment if we don't specify them as arguments.
-  # We opt to provide the password in this way.
+  # We opt to provide the password and host parameters in this way.
   server.js: |
     const { Client } = require('pg');
 
     const client = new Client({
         user: 'postgres',
-        host: 'postgres-service.website',
         database: 'website',
         port: 5432
     });
@@ -38,6 +37,8 @@ spec:
     command: ["sleep"]
     args: ["6000"]
     env:
+      - name: PGHOST
+        value: postgres-service.website
       # We pull the password from the 2_credentials secret created previously.
       - name: PGPASSWORD
         valueFrom:

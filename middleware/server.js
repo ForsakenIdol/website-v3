@@ -3,10 +3,9 @@
 const { Client } = require('pg');
 
 const client = new Client({
+    // The host and password are platform-dependent and so we pass these as environment variables.
     user: 'postgres',
-    host: 'postgres',
     database: 'website',
-    // The password goes in an environment variable in production hosting.
     port: 5432
 });
 
