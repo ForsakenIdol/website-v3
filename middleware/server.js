@@ -40,12 +40,14 @@ app.listen(app_port, () => {
 /* Test Paths */
 
 app.get('/test', (req, res) => {
+    console.log("GET /test");
     client.query('SELECT * FROM github;', (err, client_res) => {
         return res.send(err ? err.stack : client_res.rows);
     });
 });
 
 app.get('/kill', (req, res) => {
+    console.log("GET /kill");
     client.end()
     .then(() => {
         console.log("Successfully disconnected client.");
