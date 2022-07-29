@@ -61,4 +61,33 @@ app.get('/kill', (req, res) => {
     });
 })
 
-  /* CRUD Paths */
+/* CRUD Paths */
+
+// GET all
+
+app.get('/get', (req, res) => {
+    console.log("GET /get");
+    client.query('SELECT * FROM github;', (err, client_res) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({
+                'status': 500,
+                'response': { 'error': 'There was an error processing your request.' }
+            });
+        }
+        else return res.status(200).send({
+            'status': 200,
+            'response': { 'rows': client_res.rows }
+        });
+    });
+});
+
+// GET by repo_id
+
+app.get('/get/id/:id', (req, res) => {
+    console.log(`GET /get/id/${req.params.id}`)
+    return res.status(501).send({
+        'status': 501,
+        'response': { 'error': 'Not implemented!' }
+    })
+})
