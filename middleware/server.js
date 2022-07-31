@@ -44,12 +44,18 @@ app.get('/kill', (req, res) => {
     client.end()
     .then(() => {
         console.log("Successfully disconnected client.");
-        res.send("Successfully disconnected client.");
+        res.status(200).send({
+            'status': 200,
+            'response': { 'message': "Successfully disconnected client." }
+        });
         process.exit(0);
     })
     .catch(error => {
         console.log("Error during disconnection.");
-        res.send("Error during disconnection.");
+        res.status(500).send({
+            'status': 500,
+            'response': { 'message': "Error during disconnection." }
+        });
         process.exit(1);
     });
 })
@@ -69,7 +75,7 @@ app.get('/get', (req, res) => {
             console.log(err);
             return res.status(500).send({
                 'status': 500,
-                'response': { 'error': 'There was an error processing your request.' }
+                'response': { 'message': 'There was an error processing your request.' }
             });
         }
         else return res.status(200).send({
@@ -85,6 +91,6 @@ app.get('/get/id/:id', (req, res) => {
     console.log(`GET /get/id/${req.params.id}`)
     return res.status(501).send({
         'status': 501,
-        'response': { 'error': 'Not implemented!' }
+        'response': { 'message': 'Not implemented!' }
     })
 });
