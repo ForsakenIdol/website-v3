@@ -70,7 +70,7 @@ app.get('/kill', (req, res) => {
 
 app.get('/get', (req, res) => {
     console.log("GET /get");
-    client.query('SELECT * FROM github;', (err, client_res) => {
+    client.query('SELECT * FROM github;', (err, db_res) => {
         if (err) {
             console.log(err);
             return res.status(500).send({
@@ -80,7 +80,7 @@ app.get('/get', (req, res) => {
         }
         else return res.status(200).send({
             'status': 200,
-            'response': { 'rows': client_res.rows }
+            'response': { 'rows': db_res.rows }
         });
     });
 });
@@ -88,9 +88,20 @@ app.get('/get', (req, res) => {
 // GET by repo_id
 
 app.get('/get/id/:id', (req, res) => {
-    console.log(`GET /get/id/${req.params.id}`)
-    return res.status(501).send({
-        'status': 501,
-        'response': { 'message': 'Not implemented!' }
-    })
+    console.log(`GET /get/id/${req.params.id}`);
+    const query = "SELECT * FROM github WHERE repo_id = $1;";
+    const parameters = [ req.params.id ];
+    client.query(query, parameters, (err, db_res) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({
+                'status': 500,
+                'response': { 'message': 'There was an error processing your request.' }
+            });
+        }
+        else return res.status(200).send({
+            'status': 200,
+            'response': { 'rows': db_res.rows }
+        });
+    });
 });
