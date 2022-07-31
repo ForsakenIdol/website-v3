@@ -37,14 +37,7 @@ app.listen(app_port, () => {
     });
 });
 
-/* Test Paths */
-
-app.get('/test', (req, res) => {
-    console.log("GET /test");
-    client.query('SELECT * FROM github;', (err, client_res) => {
-        return res.send(err ? err.stack : client_res.rows);
-    });
-});
+/* Admin Paths */
 
 app.get('/kill', (req, res) => {
     console.log("GET /kill");
@@ -61,7 +54,11 @@ app.get('/kill', (req, res) => {
     });
 })
 
-/* CRUD Paths */
+/* 
+ * CRD Paths (We don't need an Update path, since we won't be checking if rows change,
+ * at every update we'll just delete and re-add the row since the primary key is the
+ * repo ID.)
+ */
 
 // GET all
 
@@ -90,4 +87,4 @@ app.get('/get/id/:id', (req, res) => {
         'status': 501,
         'response': { 'error': 'Not implemented!' }
     })
-})
+});
