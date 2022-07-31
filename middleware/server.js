@@ -77,7 +77,13 @@ app.get('/kill', (req, res) => {
 
 // CREATE (POST) new row
 
-// TODO
+app.post('/create', (req, res) => {
+    logMessage("POST /create");
+    return res.status(501). send({
+        'status': 501,
+        'response': { 'message': "Not implemented!" }
+    })
+});
 
 // GET all
 
