@@ -212,8 +212,39 @@ app.get('/get/id/:id', (req, res) => {
 app.post('/delete/id/:id', (req, res) => {
     logMessage("POST /delete");
     logMessage(`Deleting repository with ID ${req.params.id}...`);
-    return res.status(501).send({
-        'status': 501,
-        'response': { 'message': 'Not yet implemented!' }
+    const query = "DELETE FROM github WHERE repo_id = $1";
+    const parameters = [ req.params.id ];
+    client.query(query, parameters, (err, db_res) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({
+                'status': 500,
+                'response': { 'message': 'There was an error processing your request.' }
+            });
+        }
+        else {
+            const result_message = `DELETE operation affected ${db_res.rowCount} rows.`;
+            logMessage(result_message)
+            // A DELETE operation that affects zero rows still returns success by node-postgres.
+            // We need to catch this and explicity make it a client error.
+            if (db_res.rowCount == 0) {
+                return res.status(400).send({
+                    'status': 400,
+                    'response': {
+                        'message': result_message
+                    }
+                });
+            }
+            else {
+                logMessage("DELETE affected at least 1 row.");
+                // Could return deleted row, but this is optional.
+                return res.status(200).send({
+                    'status': 200,
+                    'response': {
+                        'message': result_message,
+                    }
+                });
+            }
+        }
     });
 })
