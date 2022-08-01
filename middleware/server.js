@@ -35,6 +35,12 @@ const client = new Client({
 const app = express();
 const app_port = process.env.EXPRESSPORT;
 
+// The 'body-parser' package may not be required.
+// See: https://medium.com/@mmajdanski/express-body-parser-and-why-may-not-need-it-335803cd048c
+// Here, we test that hypothesis by using Express.js' implementation of body-parser logic.
+
+app.use(express.json());
+
 app.listen(app_port, () => {
     logMessage(`Server listening on port ${app_port}.`);
     client.connect(err => {
@@ -79,10 +85,11 @@ app.get('/kill', (req, res) => {
 
 app.post('/create', (req, res) => {
     logMessage("POST /create");
+    console.log(req.body);
     return res.status(501). send({
         'status': 501,
         'response': { 'message': "Not implemented!" }
-    })
+    });
 });
 
 // GET all
