@@ -45,7 +45,7 @@ app.listen(app_port, () => {
     logMessage(`Server listening on port ${app_port}.`);
     client.connect(err => {
         if (err) {
-            logMessage(err);
+            console.log(err);
             throw "There was an error connecting to the PostgreSQL database.";
         }
         else logMessage(`Connected to the PostgreSQL database at '${process.env.PGHOST}'.`);
@@ -83,12 +83,69 @@ app.get('/kill', (req, res) => {
 
 // CREATE (POST) new row
 
+/*
+ * Test Command:
+ * curl -X POST -H "Content-Type: application/json" \
+-d '{ "repo_id": 9375101, "repo_name": "my_test_repo_1", "description": "my test description", "private": "t" }' \
+localhost:9001/create
+ */
+
 app.post('/create', (req, res) => {
     logMessage("POST /create");
     console.log(req.body);
-    return res.status(501). send({
-        'status': 501,
-        'response': { 'message': "Not implemented!" }
+
+    // There is 1 key field that needs to be present; all the others are optional.
+    const repo_id = req.body.repo_id;
+    if (!repo_id || typeof(repo_id) != 'number') return res.status(400).send({
+        'status': 400,
+        'response': { 'message': 'Malformed query; missing required field repo_id.' }
+    });
+
+    const query = "INSERT INTO github VALUES ($1, $2, $3, $4, $5, $6);";
+    // Construct the query parameters
+    const repo_name = req.body.repo_name;
+    const created_at = req.body.created_at;
+    const description = req.body.description;
+    const url = req.body.url;
+    const private = req.body.private;
+    const parameters = [
+        repo_id,
+        repo_name ? repo_name : "",
+        created_at ? created_at : new Date(), // Default to Now
+        description ? description : "",
+        url ? url : "",
+        private ? private : 'f' // Default to public repository setting
+    ];
+
+    logMessage(`Inserting Parameters: ${parameters}`);
+
+    client.query(query, parameters, (err, db_res) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({
+                'status': 500,
+                'response': { 'message': 'There was an error processing your request.' }
+            });
+        }
+        else {
+            const success_message = `${db_res.command} command created ${db_res.rowCount} new entry successfully.`;
+            logMessage(success_message);
+            // Return inserted row
+            return res.status(201).send({
+                'status': 201,
+                'response': {
+                    'message': success_message,
+                    'entry': {
+                        'repo_id': repo_id,
+                        'repo_name': repo_name,
+                        'created_at': created_at,
+                        'description': description,
+                        'url': url,
+                        'private': private
+                    }
+                }
+            });
+        }
     });
 });
 
@@ -98,7 +155,7 @@ app.get('/get', (req, res) => {
     logMessage("GET /get");
     client.query('SELECT * FROM github;', (err, db_res) => {
         if (err) {
-            logMessage(err);
+            console.log(err);
             return res.status(500).send({
                 'status': 500,
                 'response': { 'message': 'There was an error processing your request.' }
@@ -122,7 +179,7 @@ app.get('/get/id/:id', (req, res) => {
     const parameters = [ req.params.id ];
     client.query(query, parameters, (err, db_res) => {
         if (err) {
-            logMessage(err);
+            console.log(err);
             return res.status(500).send({
                 'status': 500,
                 'response': { 'message': 'There was an error processing your request.' }
