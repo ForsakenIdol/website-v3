@@ -121,11 +121,23 @@ app.post('/create', (req, res) => {
 
     client.query(query, parameters, (err, db_res) => {
         if (err) {
-            console.log(err);
-            return res.status(500).send({
-                'status': 500,
-                'response': { 'message': 'There was an error processing your request.' }
-            });
+            // Special handling for duplicate primary key error (Code 23505)
+            if (err.code == 23505) {
+                return res.status(400).send({
+                    'status': 400,
+                    'response': {
+                        'message': "Unique key violation.",
+                        'detail': err.detail
+                    }
+                });
+            }
+            else {
+                console.log(err);
+                return res.status(500).send({
+                    'status': 500,
+                    'response': { 'message': 'There was an error processing your request.' }
+                });
+            }
         }
         else {
             const success_message = `${db_res.command} command created ${db_res.rowCount} new entry successfully.`;
