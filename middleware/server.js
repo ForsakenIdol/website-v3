@@ -206,3 +206,14 @@ app.get('/get/id/:id', (req, res) => {
         }
     });
 });
+
+// POST delete by repo_id
+
+app.post('/delete/id/:id', (req, res) => {
+    logMessage("POST /delete");
+    logMessage(`Deleting repository with ID ${req.params.id}...`);
+    return res.status(501).send({
+        'status': 501,
+        'response': { 'message': 'Not yet implemented!' }
+    });
+})
