@@ -33,7 +33,7 @@ const client = new Client({
 });
 
 const app = express();
-const app_port = process.env.EXPRESSPORT;
+const app_port = 9001; // We fix the app port for simplicity.
 
 // The 'body-parser' package may not be required.
 // See: https://medium.com/@mmajdanski/express-body-parser-and-why-may-not-need-it-335803cd048c

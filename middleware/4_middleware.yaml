@@ -148,9 +148,6 @@ spec:
           secretKeyRef:
             name: postgres-credentials
             key: POSTGRES_PASSWORD
-        # Even numbers need to be passed as strings to pods for environment variables.
-      - name: EXPRESSPORT
-        value: '9001'
     volumeMounts:
     - name: database-connection-script
       mountPath: /scripts/server.js
