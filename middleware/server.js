@@ -3,7 +3,7 @@
  * PostgreSQL Server
  ******************************
  * 
- * This server contains the 4 main CRUD operations all targeting the 'github' table 'website' database.
+ * This server contains 3 of the 4 main CRUD operations (Create, Read, Delete - Update is not required) all targeting the 'github' table 'website' database.
  * It assumes that the relevant relations exist and makes no atttempt to check that they do.
  * 
  * Run this file with "npm run dev". The relevant environment variables are as follows.
@@ -223,11 +223,12 @@ app.post('/delete/id/:id', (req, res) => {
             });
         }
         else {
-            const result_message = `DELETE operation affected ${db_res.rowCount} rows.`;
+            let result_message = `DELETE operation affected ${db_res.rowCount} rows.`;
             logMessage(result_message)
             // A DELETE operation that affects zero rows still returns success by node-postgres.
             // We need to catch this and explicity make it a client error.
             if (db_res.rowCount == 0) {
+                result_message = `DELETE operation affected ${db_res.rowCount} rows. No rows were deleted!`;
                 return res.status(400).send({
                     'status': 400,
                     'response': {
