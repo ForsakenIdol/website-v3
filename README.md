@@ -20,13 +20,13 @@ All the components of this website will be hosted through Kubernetes.
 
 The database contains application data. At the present moment, this will likely be a single table containing GitHub repository information. The schema of this table has not been decided yet. In the interests of learning a new type of database and because [`npm pg`](https://www.npmjs.com/package/pg) has over 3 times the number of weekly downloads over [`npm mysql`](https://www.npmjs.com/package/mysql), the database will be created in PostgreSQL.
 
-### 2. Database Server
+### 2. Database Server (Middleware)
 
 **Stack**: Express.js (JavaScript)
 
 The server is middleware that sits in front of the database and exposes CRUD operations. This serves 2 main purposes:
 
-- Validating incoming HTTP requests for PUT, GET, PATCH, and DELETE operations, e.g. if the request is formatted incorrectly or if authentication data was not sent with the request.
+- Validating incoming HTTP requests for PUT, GET, and DELETE operations, e.g. if the request is formatted incorrectly or if authentication data was not sent with the request. We do not need a PATCH route as the database is transient and can be wiped and restored as required.
 - Abstract the database away from the frontend, making switching databases easier if desired or required.
 
 ### 3. GitHub Cronjob
