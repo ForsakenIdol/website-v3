@@ -9,7 +9,8 @@
  * Run this file with "npm run dev". The relevant environment variables are as follows.
  * - PGHOST: PostgreSQL hostname.
  * - PGPASSWORD: PostgreSQL password.
- * - EXPRESSPORT: Port for the Express.js wrapper.
+ * 
+ * EXPRESSPORT is now fixed at 9001 for simplicity.
  * 
  */
 

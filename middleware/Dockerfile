@@ -11,5 +11,5 @@ WORKDIR /app
 COPY --from=install /app ./
 CMD [ "node", "server.js" ]
 
-# Build with "docker build -t lachldwaws/pgsql_server ."
+# Build locally with "docker build -t lachldwaws/pgsql_server ."
 # Run locally with "docker run -p 9001:9001 --env "PGHOST=host.docker.internal" --env PGPASSWORD lachldwaws/pgsql_server".
