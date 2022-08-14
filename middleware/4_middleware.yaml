@@ -1,0 +1,45 @@
+# The middleware sits in front of the PostgreSQL database and exposes 3 CRUD operations.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: website
+  name: dep-middleware
+spec:
+  selector:
+    matchLabels:
+      app: pod-middleware
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pod-middleware
+    spec:
+      containers:
+      - name: container-middleware
+        image: lachldwaws/pgsql_server:1.0
+        imagePullPolicy: Always
+        env:
+        - name: PGHOST
+          value: 'postgres-service.website'
+        # We pull the password from the 2_credentials secret created previously.
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: POSTGRES_PASSWORD
+---
+# We abandon the service naming convention from the Postgres service and opt for a simpler service name here: "db-server.website".
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: website
+  name: db-server
+spec:
+  selector:
+    app: pod-middleware
+  ports:
+    - protocol: TCP
+      port: 9001
+      targetPort: 9001
+---
