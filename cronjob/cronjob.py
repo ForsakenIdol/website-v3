@@ -30,8 +30,6 @@ for repo in g.get_user().get_repos():
 
 # Practising the 'requests' library
 
-
-
 r = requests.get(os.environ["DB_SERVER"])
 print(r.url)
 try:
