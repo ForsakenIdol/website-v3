@@ -1,3 +1,13 @@
+"""
+#########################
+# ENVIRONMENT VARIABLES
+#########################
+
+- GITHUB_PAN: The personal access token for the GitHub user who's repository information we need to extract.
+- DB_SERVER: The hostname of the middleware fronting the database server.
+
+"""
+
 from json import JSONDecodeError
 from github import Github as GitHub_Initializer
 import os
@@ -20,7 +30,9 @@ for repo in g.get_user().get_repos():
 
 # Practising the 'requests' library
 
-r = requests.get("http://localhost:9001")
+
+
+r = requests.get(os.environ["DB_SERVER"])
 print(r.url)
 try:
     print(r.json())
