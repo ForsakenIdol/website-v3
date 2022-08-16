@@ -53,7 +53,13 @@ app.listen(app_port, () => {
     });
 });
 
-/* Admin Paths */
+/* Helper Paths */
+
+// Healthcheck path
+app.get('/ping', (req, res) => {
+    logMessage('GET /ping');
+    return res.status(200).send('Pong!');
+});
 
 app.get('/kill', (req, res) => {
     logMessage(`GET /kill`);
@@ -74,7 +80,7 @@ app.get('/kill', (req, res) => {
         });
         process.exit(1);
     });
-})
+});
 
 /* 
  * CRD Paths (We don't need an Update path, since we won't be checking if rows change,
