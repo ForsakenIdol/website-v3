@@ -6,12 +6,27 @@
 - GITHUB_PAN: The personal access token for the GitHub user who's repository information we need to extract.
 - DB_SERVER: The hostname of the middleware fronting the database server.
 
+##########
+# TODO
+##########
+
+- Log using the "logMessage(message)" function from now on.
+
 """
 
 from json import JSONDecodeError
 from github import Github as GitHub_Initializer
 import os
 import requests # For communicating with the database API wrapper.
+from datetime import datetime, timezone, timedelta
+
+def getDate(offset):
+    return datetime.now(timezone(timedelta(hours=offset)))
+
+offset = 8; # Fixed for AWST for now.
+
+def logMessage(message):
+    print("[{}] {}".format(getDate(offset), message))
 
 # Requires the user's personal access token in an environment variable named "GITHUB_PAN"
 g = GitHub_Initializer(os.environ["GITHUB_PAN"])
@@ -30,7 +45,12 @@ for repo in g.get_user().get_repos():
 
 # Practising the 'requests' library
 
-r = requests.get(os.environ["DB_SERVER"])
+try:
+    r = requests.get(os.environ["DB_SERVER"] + "/get/id/463741050")
+except ConnectionError:
+    print("Connection error while trying to reach database server.")
+    exit(1)
+
 print(r.url)
 try:
     print(r.json())
