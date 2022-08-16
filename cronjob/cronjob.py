@@ -11,6 +11,7 @@
 ##########
 
 - Log using the "logMessage(message)" function from now on.
+- Before running the main body of the cronjob, hit the "/ping" path to check if the database server returns a 200 status.
 
 """
 
