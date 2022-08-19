@@ -6,13 +6,6 @@
 - GITHUB_PAN: The personal access token for the GitHub user who's repository information we need to extract.
 - DB_SERVER: The hostname of the middleware fronting the database server.
 
-##########
-# TODO
-##########
-
-- Log using the "logMessage(message)" function from now on.
-- Before running the main body of the cronjob, hit the "/ping" path to check if the database server returns a 200 status.
-
 """
 
 from github import Github as GitHub_Initializer
@@ -28,8 +21,11 @@ offset = 8; # Fixed for AWST for now.
 def logMessage(message):
     print("[{}] {}".format(getDate(offset), message))
 
-def fetch(path):
-    r = requests.get(os.environ["DB_SERVER"] + path)
+def fetch(path, method="GET", body=None):
+    if body == None and method == "GET":
+        r = requests.get(os.environ["DB_SERVER"] + path)
+    else:
+        r = requests.post(os.environ["DB_SERVER"] + path, json=body)
     return r
 
 logMessage("Initialising GitHub cronjob...")
@@ -63,19 +59,34 @@ Imports repository information to the PostgreSQL database in the same cluster.
 
 for repo in g.get_user().get_repos():
     # Of note: `repo.homepage` does not link to the repository page, unless it is the special README page.
-    print([repo.id, repo.name, repo.created_at, repo.description, repo.url, repo.private])
+    body = {
+        "repo_id": repo.id,
+        "repo_name": repo.name,
+        "created_at": str(repo.created_at),
+        "description": repo.description,
+        "url": repo.url,
+        "private": repo.private
+    }
+    logMessage(body)
 
-# Practising the 'requests' library
+    # DELETE...
+    try:
+        r = fetch("/delete/id/{}".format(repo.id), method="POST")
+        logMessage("Delete returned status code {}".format(r.status_code))
+        logMessage(r.json())
+    except Exception as e:
+        logMessage("Error while deleting entry.")
+        print(e)
+        exit(1)
 
-try:
-    r = fetch("/get/id/463741050")
-except Exception as e:
-    logMessage("Connection error while trying to reach database server.")
-    exit(1)
+    # ... then CREATE.
+    try:
+        r = fetch("/create", body=body)
+        logMessage("Create returned status code {}".format(r.status_code))
+        logMessage(r.json())
+    except Exception as e:
+        logMessage("Error while creating entry.")
+        print(e)
+        exit(1)
 
-print(r.url)
-try:
-    print(r.json())
-except Exception as e:
-    print(r.text)
-    print("Response is not a JSON object! Could not JSONify response.")
+logMessage("Script completely successfully.")
