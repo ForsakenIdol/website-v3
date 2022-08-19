@@ -17,15 +17,16 @@ def getDate(offset):
     return datetime.now(timezone(timedelta(hours=offset)))
 
 offset = 8; # Fixed for AWST for now.
+port = 9001; # Server port
 
 def logMessage(message):
     print("[{}] {}".format(getDate(offset), message))
 
 def fetch(path, method="GET", body=None):
     if body == None and method == "GET":
-        r = requests.get(os.environ["DB_SERVER"] + path)
+        r = requests.get("http://{}:{}{}".format(os.environ["DB_SERVER"], port, path))
     else:
-        r = requests.post(os.environ["DB_SERVER"] + path, json=body)
+        r = requests.post("http://{}:{}{}".format(os.environ["DB_SERVER"], port, path), json=body)
     return r
 
 logMessage("Initialising GitHub cronjob...")
