@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  namespace: website
+  name: github-cronjob
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: github-container
+            image: lachldwaws/python_cronjob
+            imagePullPolicy: IfNotPresent
+            env:
+            - name: GITHUB_PAN
+              valueFrom:
+                secretKeyRef:
+                  name: cronjob-credentials
+                  key: GITHUB_PAN
+            - name: DB_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  # The name of the ConfigMap containing the value you want to assign
+                  name: cronmap
+                  # Specify the key associated with the value
+                  key: server_hostname
+          restartPolicy: OnFailure

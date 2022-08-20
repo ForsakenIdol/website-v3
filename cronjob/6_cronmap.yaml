@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: website
+  name: cronmap
+data:
+  server_hostname: 'db-server.website'
