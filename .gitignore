@@ -9,4 +9,5 @@ node_modules/
 # General
 
 *credentials.yaml
-debug/
+# The frontend is a separete, Next.js repository that I want to keep separate from the rest of the application.
+frontend/
