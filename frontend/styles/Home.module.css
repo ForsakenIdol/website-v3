@@ -1,0 +1,19 @@
+.navbar {
+    min-height: 15vh;
+}
+
+.splash {
+    display: flex;
+    flex-direction: column; /* Successive elements will be placed underneath the previous one. */
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.splash h1 {
+    margin-bottom: 0;
+}
+
+.emphasis {
+    font-style: italic;
+}

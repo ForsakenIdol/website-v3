@@ -6,13 +6,21 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>My Application</title>
+        <title>Home - ForsakenIdol</title>
         <meta name="description" content="An application developed by me!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <header>
+        {/* Eventually we'll put the Navbar <nav> element in here. */}
+        <nav className={styles.navbar}>
+          <p>Le Navbar Oui Oui Oui</p>
+        </nav>
+      </header>
       <main>
-        <h1>My Website!</h1>
-        <p>Whooo this is sick</p>
+        <div className={styles.splash}>
+          <h1>Forsaken Idol</h1>
+          <p className={styles.emphasis}>Sample text</p>
+        </div>
       </main>
     </div>
   )
