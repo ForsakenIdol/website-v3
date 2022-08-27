@@ -34,7 +34,7 @@
 /* Below the splash box is my bio section */
 .bio {
     color: white;
-    background: black;
+    background: rgba(0, 0, 0, 0.7);
     /* By setting a negative margin horizontally, we can make the bio element stretch slightly past the screen edges.
        We then use padding within the .bio element to move the actual content away from the element's walls. */
     margin: 0 -1em;

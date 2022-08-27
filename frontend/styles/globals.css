@@ -18,3 +18,15 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
+
+footer {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: black;
+    height: 5vh;
+    /* We can "overflow" the bottom margin to cover the rest of the lower section of the page... */
+    margin: 0 -1em -1em;
+    /* ... white using padding to keep the elements in the center. */
+    padding: 2rem 0 1rem;
+}

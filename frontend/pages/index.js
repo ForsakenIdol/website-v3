@@ -30,6 +30,10 @@ export default function Home() {
           <p>Maecenas gravida massa turpis, eget vehicula lorem molestie porta. Fusce cursus ligula ac vestibulum tristique. Vivamus eu leo lorem. Proin consequat eget velit quis egestas. Ut auctor, orci vel facilisis volutpat, purus metus fringilla dui, id sagittis metus tellus id metus. Mauris nunc justo, dictum sed facilisis a, elementum suscipit massa. Curabitur rutrum velit in odio pellentesque viverra. Maecenas id diam tristique, molestie nunc in, dapibus quam. Suspendisse fermentum lorem eget dolor placerat suscipit. Suspendisse in dolor varius mauris gravida pharetra. Nam finibus at leo vitae faucibus. Aliquam sed eros velit.</p>
         </div>
 
+        <footer>
+          See you later aligator!
+        </footer>
+
       </body>
     </div>
   )
