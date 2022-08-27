@@ -16,12 +16,12 @@ export default function Home() {
           <p>Le Navbar Oui Oui Oui</p>
         </nav>
       </header>
-      <main>
+      <body>
         <div className={styles.splash}>
           <h1>Forsaken Idol</h1>
-          <p className={styles.emphasis}>Sample text</p>
+          <p className={styles.emphasis}>Sample text 123</p>
         </div>
-      </main>
+      </body>
     </div>
   )
 }
