@@ -1,5 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700");
 
+:root {
+    /* Declaring variables at the top level */
+    --gradient-1: rgba(0, 0, 0, 0.5);
+}
+
+body {
+    /* We can reference local URLs of objects in the "public/" folder */
+    background-image: linear-gradient(var(--gradient-1), var(--gradient-1)), url("/splash.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 h1 {
     font-family: 'Raleway', sans-serif;
     font-size: 3rem;

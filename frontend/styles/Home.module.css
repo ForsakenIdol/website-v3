@@ -1,19 +1,43 @@
-.navbar {
-    min-height: 15vh;
+.splash {
+    min-height: 99vh;
 }
 
-.splash {
+/* The Navbar is inside the parent splash element */
+.navbar {
+    font-weight: bold;
+    /* We need to use padding instead of margin for the top-level Navbar because there is no element above the Navbar
+       for the margin to keep away from. */
+    padding: 1rem;
+    color: white;
+}
+
+/* Splash title card with header and subheading */
+.splash_focus {
     display: flex;
     flex-direction: column; /* Successive elements will be placed underneath the previous one. */
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
+    justify-content: center;  /* Vertical Centering */
+    align-items: center; /* Horizontal Centering */
+    min-height: 90vh;
+    color: white;
 }
 
+/* Main splash title */
 .splash h1 {
     margin-bottom: 0;
 }
 
+/* Text below the splash title */
 .emphasis {
     font-style: italic;
+}
+
+/* Below the splash box is my bio section */
+.bio {
+    color: white;
+    background: black;
+    /* By setting a negative margin horizontally, we can make the bio element stretch slightly past the screen edges.
+       We then use padding within the .bio element to move the actual content away from the element's walls. */
+    margin: 0 -1em;
+    /* We use padding here because we want the invisible border to be on the edge of the splash element. */
+    padding: 5vh 5vw;
 }
