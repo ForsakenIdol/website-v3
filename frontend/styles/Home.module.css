@@ -8,7 +8,32 @@
     /* We need to use padding instead of margin for the top-level Navbar because there is no element above the Navbar
        for the margin to keep away from. */
     padding: 1rem;
+}
+
+.navbar_list li {
+    display: inline-block;
+    /* We define just the right margin here... */
+    margin-right: 3rem;
+    
+}
+
+.navbar_list li:nth-child(1) {
+    /* ... because we want additional control over the leftmost child's margin. */
+    margin-left: 1rem;
+}
+
+.navbar_list a {
+    font-family: 'Montserrat', 'Raleway', sans-serif;
+    font-weight: bold;
     color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 250ms;
+}
+
+.navbar_list a:hover {
+    color: rgba(0, 0, 0, 0.5);
 }
 
 /* Splash title card with header and subheading */
@@ -33,11 +58,18 @@
 
 /* Below the splash box is my bio section */
 .bio {
+    font-family: 'Montserrat', sans-serif;
     color: white;
-    background: rgba(0, 0, 0, 0.7);
+    --gradient-2: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(var(--gradient-2), var(--gradient-2)), url("/bio_greyscale.jpg");
+    background-size: cover;
     /* By setting a negative margin horizontally, we can make the bio element stretch slightly past the screen edges.
        We then use padding within the .bio element to move the actual content away from the element's walls. */
     margin: 0 -1em;
-    /* We use padding here because we want the invisible border to be on the edge of the splash element. */
-    padding: 5vh 5vw;
+}
+
+.bio_text {
+    /* We use padding here because we want the invisible border to be on the edge of the splash element,
+       while the main text content moves more towards the middle. */
+    padding: 5vh 20vw;
 }
