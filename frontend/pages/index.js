@@ -44,7 +44,11 @@ export default function Home({ zen }) {
       </div>
 
       <footer>
-        { zen }
+        <ul className={styles.footer_list}>
+          <li><p>ForsakenIdol 2022</p></li>
+          <li><p>{ zen }</p></li>
+          <li><a href="#">Back to Top</a></li>
+        </ul>
       </footer>
 
     </div>

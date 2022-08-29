@@ -7,6 +7,8 @@
 }
 
 html {
+    /* We set Raleway to the default font to cascade. */
+    font-family: 'Raleway', sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -18,24 +20,17 @@ body {
 }
 
 h1 {
-    font-family: 'Raleway', sans-serif;
     font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
-hr {
-    margin: 2rem 0;
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-footer {
-    display: flex;
-    justify-content: center;
-    color: white;
-    background-color: black;
-    height: 5vh;
-    /* We can "overflow" the bottom margin to cover the rest of the lower section of the page... */
-    margin: 0 -1em -1em;
-    /* ... white using padding to keep the elements in the center. */
-    padding: 2rem 0 1rem;
+hr {
+    margin: 2rem 0;
 }

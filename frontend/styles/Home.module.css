@@ -24,9 +24,6 @@
 
 .navbar_list a {
     font-family: 'Montserrat', 'Raleway', sans-serif;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: 250ms;
@@ -76,5 +73,19 @@
 
 .bio h2 {
     font-weight: 400;
+    text-transform: uppercase;
+}
+
+.footer_list {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color: black;
+    padding: 0.5rem 5vw;
+    list-style-type: none;
+    margin: 0;
+}
+
+.footer_list a {
     text-transform: uppercase;
 }
