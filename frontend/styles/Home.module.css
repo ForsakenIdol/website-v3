@@ -26,11 +26,7 @@
     font-family: 'Montserrat', 'Raleway', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: 250ms;
-}
-
-.navbar_list a:hover {
-    color: rgba(0, 0, 0, 0.5);
+    
 }
 
 /* Splash title card with header and subheading */

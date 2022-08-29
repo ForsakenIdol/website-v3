@@ -29,6 +29,11 @@ a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    transition: 250ms;
+}
+
+a:hover {
+    color: #222;
 }
 
 hr {
