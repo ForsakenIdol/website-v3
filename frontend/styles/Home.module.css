@@ -1,25 +1,25 @@
-.splash {
-    min-height: 99vh;
-}
-
 /* The Navbar is inside the parent splash element */
 .navbar {
     font-weight: bold;
     /* We need to use padding instead of margin for the top-level Navbar because there is no element above the Navbar
        for the margin to keep away from. */
-    padding: 1rem 0;
+    padding: 2vh 0;
 }
 
 .navbar_list li {
     display: inline-block;
-    /* We define just the right margin here... */
-    margin-right: 4vw;
+    margin: 0 1.5vw;
     
 }
 
 .navbar_list li:nth-child(1) {
-    /* ... because we want additional control over the leftmost child's margin. */
+    /* We want additional control over the leftmost child's margin... */
     margin-left: 3vw;
+}
+
+.navbar_list li:nth-last-child(1) {
+    /* ... as well as the rightmost child's margin. */
+    margin-right: 0;
 }
 
 .navbar_list a {
@@ -35,7 +35,7 @@
     flex-direction: column; /* Successive elements will be placed underneath the previous one. */
     justify-content: center;  /* Vertical Centering */
     align-items: center; /* Horizontal Centering */
-    min-height: 90vh;
+    height: 90vh;
     color: white;
 }
 

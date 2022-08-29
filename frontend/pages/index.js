@@ -23,7 +23,8 @@ export default function Home({ zen }) {
           <ul className={styles.navbar_list}>
             <li><a href="#">Home</a></li>
             <li><a href="#bio">About</a></li>
-            <li><a href="#">Projects</a></li>
+            <li><a href="#">Stack</a></li> {/* Stack used to create the website with explanations as to why */}
+            <li><a href="#">Projects</a></li> {/* List of GitHub Projects (possibly with featured projects display) */}
           </ul>
         </nav>
         <div className={styles.splash_focus}>
