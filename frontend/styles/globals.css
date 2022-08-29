@@ -43,4 +43,8 @@ hr {
 footer {
     color: white;
     background-color: black;
+    /* We define negative margins to eliminate the space between the footer and the edges of the viewport. */
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-bottom: -1rem;
 }
