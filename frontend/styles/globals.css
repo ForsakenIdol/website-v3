@@ -34,3 +34,8 @@ a {
 hr {
     margin: 2rem 0;
 }
+
+footer {
+    color: white;
+    background-color: black;
+}
