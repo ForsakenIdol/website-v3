@@ -7,19 +7,19 @@
     font-weight: bold;
     /* We need to use padding instead of margin for the top-level Navbar because there is no element above the Navbar
        for the margin to keep away from. */
-    padding: 1rem;
+    padding: 1rem 0;
 }
 
 .navbar_list li {
     display: inline-block;
     /* We define just the right margin here... */
-    margin-right: 3rem;
+    margin-right: 4vw;
     
 }
 
 .navbar_list li:nth-child(1) {
     /* ... because we want additional control over the leftmost child's margin. */
-    margin-left: 1rem;
+    margin-left: 3vw;
 }
 
 .navbar_list a {
