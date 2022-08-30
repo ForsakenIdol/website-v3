@@ -72,6 +72,7 @@
     --gradient-2: rgba(0, 0, 0, 0.7);
     background: linear-gradient(var(--gradient-2), var(--gradient-2)), url("/bio_greyscale.jpg");
     background-size: cover;
+    min-height: 90vh;
     /* By setting a negative margin horizontally, we can make the bio element stretch slightly past the screen edges.
        We then use padding within the .bio element to move the actual content away from the element's walls. */
     margin: 0 -1em;
