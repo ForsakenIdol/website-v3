@@ -69,9 +69,29 @@ export default function Home({ zen, github }) {
         <p>Take a look at what I'm currently working on.</p>
         <hr color='white' />
 
-        <p>{ github ? github.response.rows[0].description : "Could not load GitHub user data. Try again later." }</p>
+        <div className={styles.projects_grid}>
+        {/* ID, Name, Description, URL */}
+          <b>Repo ID</b>
+          <b>Repo Name</b>
+          <b>Repo Description</b>
+          <b>Repo URL</b>
+          
+          <p>1</p>
+          <p>2</p>
+          <p>3</p>
+          <p>4</p>
+          <p>5</p>
+          <p>6</p>
+          <p>7</p>
+          <p>8</p>
+          <p>9</p>
+          <p>10</p>
+          <p>11</p>
+          <p>12</p>
+        </div>
 
         <hr color='white' />
+        <p>{ github ? github.response.rows[0].description : "Could not load GitHub user data. Try again later." }</p>
       </div>
 
       <footer>
