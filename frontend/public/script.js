@@ -3,6 +3,4 @@
 // This is a self-calling function.
 (() => {
     console.log("DOM has loaded!");
-    
-    
 })();

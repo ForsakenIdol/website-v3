@@ -70,7 +70,7 @@ export default function Home({ zen, github }) {
           <h1>
             <Typewriter onInit={ typewriter => {typewriter.changeDelay(100).typeString('Forsaken Idol').start();} }/>
           </h1>
-          <p className={styles.emphasis}>
+          <p className={styles.emphasis} id="splash-emphasis">
             Developer | Educator | Musician | Gamer
           </p>
         </div>
