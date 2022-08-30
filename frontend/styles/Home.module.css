@@ -8,7 +8,7 @@
 
 .navbar_list li {
     display: inline-block;
-    margin: 0 1.5vw;
+    margin: 0 1.2vw;
     
 }
 
@@ -47,6 +47,7 @@
 /* Text below the splash title */
 .emphasis {
     font-style: italic;
+    letter-spacing: 1.5px;
 }
 
 /* Below the splash box is my bio section */
