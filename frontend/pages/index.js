@@ -3,12 +3,24 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 export async function getServerSideProps() {
+
   const zen = await fetch("https://api.github.com/zen");
   const data = await zen.text();
-  return { props: { zen: data } }
+
+  // Retrieve GitHub project data
+  const test_string = "http://" + process.env.DB_SERVER + ":" + process.env.SERVER_PORT + "/get";
+  try {
+    const github = await fetch(test_string);
+    const github_data = await github.json();
+    return { props: { zen: data, github: github_data } }
+  } catch (error) {
+    return { props: { zen: data, github: null } }
+  }
+
+  
 }
 
-export default function Home({ zen }) {
+export default function Home({ zen, github }) {
   return (
     <div>
       <Head>
@@ -25,8 +37,9 @@ export default function Home({ zen }) {
           <ul className={styles.navbar_list}>
             <li><a href="#">Home</a></li>
             <li><a href="#bio">About</a></li>
-            <li><a href="#">Stack</a></li> {/* Stack used to create the website with explanations as to why */}
-            <li><a href="#">Projects</a></li> {/* List of GitHub Projects (possibly with featured projects display) */}
+            <li><a href="#stack">Stack</a></li> {/* Stack used to create the website with explanations as to why */}
+            <li><a href="#projects">Projects</a></li> {/* List of GitHub Projects (possibly with featured projects display) */}
+            <li><a href="#follow">Follow</a></li>
           </ul>
         </nav>
 
@@ -50,6 +63,10 @@ export default function Home({ zen }) {
         <p>Mauris porttitor congue sollicitudin. Curabitur metus sapien, sagittis quis suscipit sed, convallis vel nibh. Nullam tincidunt pharetra rutrum. Quisque vel diam eget lorem consectetur porttitor eu a felis. Cras laoreet convallis augue, ut vulputate sem placerat quis. Phasellus dignissim elit nec leo interdum egestas. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras condimentum ultrices dolor, sit amet ullamcorper tortor. In eu scelerisque eros. Phasellus volutpat molestie eleifend. Quisque a facilisis diam, et luctus est. Nunc enim augue, malesuada in rutrum a, posuere sit amet leo.</p>
         <p>Morbi dictum consectetur risus quis tincidunt. Vivamus risus augue, facilisis sit amet gravida eget, molestie nec risus. Integer metus libero, egestas malesuada nulla non, sodales finibus lectus. Duis a dolor ultrices, auctor enim quis, porta nunc. In ut rhoncus est. Donec posuere quam tellus, id condimentum nisi varius at. Etiam pulvinar scelerisque urna, et ornare eros feugiat non. Nulla pulvinar, urna quis venenatis congue, odio dui dictum lectus, eget eleifend metus metus vel elit.</p>
         <hr color='white' />
+      </div>
+
+      <div className={styles.projects} id="projects">
+        <p>{ github ? github.response.rows[0].description : "Could not load GitHub user data. Try again later." }</p>
       </div>
 
       <footer>

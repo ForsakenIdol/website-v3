@@ -39,7 +39,6 @@
     justify-content: center;  /* Vertical Centering */
     align-items: center; /* Horizontal Centering */
     height: 80vh;
-    color: white;
 }
 
 /* Main splash title */
@@ -71,7 +70,6 @@
 /* Below the splash box is my bio section */
 .bio {
     font-family: 'Montserrat', sans-serif;
-    color: white;
     --gradient-2: rgba(0, 0, 0, 0.7);
     background: linear-gradient(var(--gradient-2), var(--gradient-2)), url("/bio_greyscale.jpg");
     background-size: cover;
@@ -81,11 +79,6 @@
     /* We use padding here because we want the invisible border to be on the edge of the splash element,
        while the main text content moves more towards the middle. */
     padding: 5vh 20vw;
-}
-
-.bio h2 {
-    font-weight: 400;
-    text-transform: uppercase;
 }
 
 .footer_list {

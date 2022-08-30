@@ -17,6 +17,7 @@ body {
     background-image: linear-gradient(var(--gradient-1), var(--gradient-1)), url("/splash.jpeg");
     background-size: cover;
     background-attachment: fixed;
+    color: white;
 }
 
 h1 {
@@ -25,11 +26,18 @@ h1 {
     letter-spacing: 0.1em;
 }
 
+h2 {
+    font-weight: 400;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
 a {
-    color: white;
     text-decoration: none;
     font-weight: bold;
     transition: 250ms;
+    color: inherit; /* Links remain purple unless we make them inherit the body color. */
 }
 
 a:hover {
@@ -41,7 +49,6 @@ hr {
 }
 
 footer {
-    color: white;
     background-color: black;
     /* We define negative margins to eliminate the space between the footer and the edges of the viewport. */
     margin-left: -1rem;
