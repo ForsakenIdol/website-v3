@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Image from 'next/image' /* The "Image" element optimises image loading. */
+import Script from 'next/script' /* The "Script" element optimises JS script loading. */
 import styles from '../styles/Home.module.css'
 
 export async function getServerSideProps() {
@@ -37,6 +38,10 @@ function print_repo_data(github) {
 }
 
 export default function Home({ zen, github }) {
+
+  const socialIconWidth = 30;
+  const socialIconHeight = 30;
+
   return (
     <div>
       <Head>
@@ -55,7 +60,7 @@ export default function Home({ zen, github }) {
             <li><a href="#bio">About</a></li>
             <li><a href="#projects">Projects</a></li> {/* List of GitHub Projects (possibly with featured projects display) */}
             <li><a href="#stack">Stack</a></li> {/* Stack used to create the website with explanations as to why */}
-            <li><a href="#follow">Follow</a></li>
+            <li><a href="#follow">Connect</a></li>
           </ul>
         </nav>
 
@@ -99,9 +104,24 @@ export default function Home({ zen, github }) {
         <hr color='white' />
       </div>
 
+      <div className={styles.stack} id="stack">
+        <h2>Stack</h2>
+        <p>The technologies and frameworks that power this website.</p>
+      </div>
+
+      <div className={styles.connect} id="connect">
+        <h2>Connect With Me</h2>
+        <a href="#"><Image src="/social/github.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+        <a href="#"><Image src="/social/instagram.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+        <a href="#"><Image src="/social/youtube.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+        <a href="#"><Image src="/social/twitch.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+      </div>
+
+      <Script src="/script.js" />
+
       <footer>
         <ul className={styles.footer_list}>
-          <li><p>ForsakenIdol 2022</p></li>
+          <li><p>© ForsakenIdol, 2023</p></li>
           <li><p>{ zen }</p></li>
           <li><a href="#">Back to Top</a></li>
         </ul>

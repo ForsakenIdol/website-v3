@@ -22,7 +22,7 @@
 .navbar_list li:nth-last-child(1) {
     /* ... as well as the rightmost child's padding. */
     padding-right: 0;
-    border-right: none;
+    border: none;
 }
 
 .navbar_list a {
@@ -56,14 +56,14 @@
     justify-content: center;
 }
 
-.navigate_to_content img {
+.navigate_to_content img, .connect img {
     /* The SVG was initially black. We invert it to white. */
     filter: invert(100%);
     transition: 250ms;
 }
 
-.navigate_to_content img:hover {
-    filter: invert(25%);
+.navigate_to_content img:hover, .connect img:hover {
+    filter: invert(50%);
 }
 
 /* Below the splash box is my bio section */
