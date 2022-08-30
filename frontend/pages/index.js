@@ -19,6 +19,14 @@ export async function getServerSideProps() {
   
 }
 
+function loop_test(max) {
+  let elements = [];
+  for (let i = 1; i < max; i++) {
+    elements.push(<p>{i}</p>);
+  }
+  return elements;
+}
+
 export default function Home({ zen, github }) {
   return (
     <div>
@@ -75,19 +83,11 @@ export default function Home({ zen, github }) {
           <b>Repo Name</b>
           <b>Repo Description</b>
           <b>Repo URL</b>
-          
-          <p>1</p>
-          <p>2</p>
-          <p>3</p>
-          <p>4</p>
-          <p>5</p>
-          <p>6</p>
-          <p>7</p>
-          <p>8</p>
-          <p>9</p>
-          <p>10</p>
-          <p>11</p>
-          <p>12</p>
+
+          <hr color='white' /><hr color='white' /><hr color='white' /><hr color='white' />
+
+          {loop_test(25)}
+
         </div>
 
         <hr color='white' />
