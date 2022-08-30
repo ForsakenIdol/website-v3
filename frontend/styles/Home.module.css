@@ -38,7 +38,7 @@
     flex-direction: column; /* Successive elements will be placed underneath the previous one. */
     justify-content: center;  /* Vertical Centering */
     align-items: center; /* Horizontal Centering */
-    height: 90vh;
+    height: 80vh;
     color: white;
 }
 
