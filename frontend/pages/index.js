@@ -45,7 +45,7 @@ export default function Home({ zen, github }) {
 
         <div className={styles.splash_focus}>
           <h1>Forsaken Idol</h1>
-          <p className={styles.emphasis}>Developer. Educator. Musician. Severe Video Game Addict.</p>
+          <p className={styles.emphasis}>Developer | Educator | Musician | Gamer</p>
         </div>
 
         <div className={styles.navigate_to_content}>

@@ -48,8 +48,7 @@
 
 /* Text below the splash title */
 .emphasis {
-    font-style: italic;
-    letter-spacing: 1.5px;
+    letter-spacing: 3px;
 }
 
 .navigate_to_content {
