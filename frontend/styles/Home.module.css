@@ -118,7 +118,7 @@
     margin: 0;
 }
 
-.footer_list li:nth-last-child(1) {
+.footer_list li:nth-last-child(1), .projects_grid a {
     /* The final link object in the footer list is playing up and sitting a space above the other elements.
        We fix that here by giving it a top margin. */
     margin-top: 1rem;

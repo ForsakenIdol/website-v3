@@ -19,10 +19,19 @@ export async function getServerSideProps() {
   
 }
 
-function loop_test(max) {
-  let elements = [];
-  for (let i = 1; i < max; i++) {
-    elements.push(<p>{i}</p>);
+function print_repo_data(github) {
+  if (!github) return [
+    <p></p>, <p></p>, <p>Could not load GitHub user data. Try again later.</p>
+  ];
+  let elements = []
+  for (let i = 0; i < github.response.rows.length; i++) {
+    // Skip private repositories
+    if (github.response.rows[i].private) continue;
+    /* ID, Name, Description, URL */
+    elements.push(<p>{github.response.rows[i].repo_id}</p>);
+    elements.push(<p>{github.response.rows[i].repo_name}</p>);
+    elements.push(<p>{github.response.rows[i].description}</p>);
+    elements.push(<a href={github.response.rows[i].url} target="_blank">Link</a>);
   }
   return elements;
 }
@@ -83,15 +92,11 @@ export default function Home({ zen, github }) {
           <b>Repo Name</b>
           <b>Repo Description</b>
           <b>Repo URL</b>
-
           <hr color='white' /><hr color='white' /><hr color='white' /><hr color='white' />
-
-          {loop_test(25)}
-
+          {print_repo_data(github)}
         </div>
 
         <hr color='white' />
-        <p>{ github ? github.response.rows[0].description : "Could not load GitHub user data. Try again later." }</p>
       </div>
 
       <footer>
