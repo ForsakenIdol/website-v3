@@ -20,6 +20,7 @@ export default function Home({ zen }) {
 
       {/* No <body> tags here. The entire parent <div> element already renders inside the <body> tag. */}
       <div className={styles.splash}>
+
         <nav className={styles.navbar}>
           <ul className={styles.navbar_list}>
             <li><a href="#">Home</a></li>
@@ -28,10 +29,18 @@ export default function Home({ zen }) {
             <li><a href="#">Projects</a></li> {/* List of GitHub Projects (possibly with featured projects display) */}
           </ul>
         </nav>
+
         <div className={styles.splash_focus}>
           <h1>Forsaken Idol</h1>
           <p className={styles.emphasis}>Developer. Educator. Musician.</p>
         </div>
+
+        <div className={styles.navigate_to_content}>
+          <a href="#bio">
+            <Image src="/down-arrow.svg" height={50} width={50} />
+          </a>
+        </div>
+
       </div>
 
       <div className={styles.bio} id="bio">

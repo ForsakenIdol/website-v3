@@ -8,18 +8,21 @@
 
 .navbar_list li {
     display: inline-block;
-    margin: 0 1.2vw;
+    /* We switched the margins for padding here to exploit the border property for a nice split between links. */
+    padding: 0 1.5vw;
+    border-right: 2px solid #777;
     
 }
 
 .navbar_list li:nth-child(1) {
-    /* We want additional control over the leftmost child's margin... */
-    margin-left: 3vw;
+    /* We want additional control over the leftmost child's padding... */
+    padding-left: 3vw;
 }
 
 .navbar_list li:nth-last-child(1) {
-    /* ... as well as the rightmost child's margin. */
-    margin-right: 0;
+    /* ... as well as the rightmost child's padding. */
+    padding-right: 0;
+    border-right: none;
 }
 
 .navbar_list a {
@@ -48,6 +51,21 @@
 .emphasis {
     font-style: italic;
     letter-spacing: 1.5px;
+}
+
+.navigate_to_content {
+    display: flex;
+    justify-content: center;
+}
+
+.navigate_to_content img {
+    /* The SVG was initially black. We invert it to white. */
+    filter: invert(100%);
+    transition: 250ms;
+}
+
+.navigate_to_content img:hover {
+    filter: invert(25%);
 }
 
 /* Below the splash box is my bio section */
