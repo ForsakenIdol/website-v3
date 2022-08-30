@@ -8,15 +8,14 @@ export async function getServerSideProps() {
   const data = await zen.text();
 
   // Retrieve GitHub project data
-  const test_string = "http://" + process.env.DB_SERVER + ":" + process.env.SERVER_PORT + "/get";
+  const github_string = "http://" + process.env.DB_SERVER + ":" + process.env.SERVER_PORT + "/get";
   try {
-    const github = await fetch(test_string);
+    const github = await fetch(github_string);
     const github_data = await github.json();
     return { props: { zen: data, github: github_data } }
   } catch (error) {
     return { props: { zen: data, github: null } }
   }
-
   
 }
 
@@ -24,7 +23,7 @@ export default function Home({ zen, github }) {
   return (
     <div>
       <Head>
-        {/* Anything within the <Head> element will be shifted to the <head> element by Next.js. */}
+        {/* Anything within <Head> will be shifted to the <head> element by Next.js. */}
         <title>Home - ForsakenIdol</title>
         <meta name="description" content="An application developed by me!" />
         <link rel="icon" href="/favicon.ico" />
