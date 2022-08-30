@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image' /* The "Image" element optimises image loading. */
 import Script from 'next/script' /* The "Script" element optimises JS script loading. */
 import styles from '../styles/Home.module.css'
+//import Typewriter from 'typewriter-effect/dist/core'
+import Typewriter from 'typewriter-effect'
 
 export async function getServerSideProps() {
 
@@ -65,8 +67,12 @@ export default function Home({ zen, github }) {
         </nav>
 
         <div className={styles.splash_focus}>
-          <h1>Forsaken Idol</h1>
-          <p className={styles.emphasis}>Developer | Educator | Musician | Gamer</p>
+          <h1>
+            <Typewriter onInit={ typewriter => {typewriter.changeDelay(100).typeString('Forsaken Idol').start();} }/>
+          </h1>
+          <p className={styles.emphasis}>
+            Developer | Educator | Musician | Gamer
+          </p>
         </div>
 
         <div className={styles.navigate_to_content}>
@@ -117,8 +123,8 @@ export default function Home({ zen, github }) {
         <a href="#"><Image src="/social/twitch.svg" height={socialIconHeight} width={socialIconWidth} /></a>
       </div>
 
+      {/* JS Scripts */}
       <Script src="/script.js" />
-
       <footer>
         <ul className={styles.footer_list}>
           <li><p>© ForsakenIdol, 2023</p></li>
