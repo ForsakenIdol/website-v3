@@ -65,7 +65,8 @@ for repo in g.get_user().get_repos():
         "repo_name": repo.name,
         "created_at": str(repo.created_at),
         "description": repo.description,
-        "url": repo.url,
+        # "repo.url" links to the repository's API URL, while "repo.html_url" links to the repository's GUI URL on GitHub.
+        "url": repo.html_url,
         "private": repo.private
     }
     logMessage(body)
