@@ -81,6 +81,21 @@
     padding: 5vh 20vw;
 }
 
+.projects {
+    --gradient-3: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(var(--gradient-3), var(--gradient-3)), url("/projects.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+    margin: 0 -1em;
+    padding: 5vh 20vw;
+}
+
+.projects h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
 .footer_list {
     display: flex;
     justify-content: space-between;

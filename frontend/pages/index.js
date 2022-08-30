@@ -37,15 +37,15 @@ export default function Home({ zen, github }) {
           <ul className={styles.navbar_list}>
             <li><a href="#">Home</a></li>
             <li><a href="#bio">About</a></li>
-            <li><a href="#stack">Stack</a></li> {/* Stack used to create the website with explanations as to why */}
             <li><a href="#projects">Projects</a></li> {/* List of GitHub Projects (possibly with featured projects display) */}
+            <li><a href="#stack">Stack</a></li> {/* Stack used to create the website with explanations as to why */}
             <li><a href="#follow">Follow</a></li>
           </ul>
         </nav>
 
         <div className={styles.splash_focus}>
           <h1>Forsaken Idol</h1>
-          <p className={styles.emphasis}>Developer. Educator. Musician.</p>
+          <p className={styles.emphasis}>Developer. Educator. Musician. Severe Video Game Addict.</p>
         </div>
 
         <div className={styles.navigate_to_content}>
@@ -66,7 +66,13 @@ export default function Home({ zen, github }) {
       </div>
 
       <div className={styles.projects} id="projects">
+        <h2>My Projects</h2>
+        <p>Take a look at what I'm currently working on.</p>
+        <hr color='white' />
+
         <p>{ github ? github.response.rows[0].description : "Could not load GitHub user data. Try again later." }</p>
+
+        <hr color='white' />
       </div>
 
       <footer>
