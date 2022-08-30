@@ -62,7 +62,7 @@ export default function Home({ zen, github }) {
             <li><a href="#bio">About</a></li>
             <li><a href="#projects">Projects</a></li> {/* List of GitHub Projects (possibly with featured projects display) */}
             <li><a href="#stack">Stack</a></li> {/* Stack used to create the website with explanations as to why */}
-            <li><a href="#follow">Connect</a></li>
+            <li><a href="#connect">Connect</a></li>
           </ul>
         </nav>
 
