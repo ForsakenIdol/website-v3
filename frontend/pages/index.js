@@ -46,7 +46,7 @@ function print_stack_items() {
   const content = [
     { "title": "database: postgresql", "image": "/stack/postgres.svg" },
     { "title": "middleware: node.js", "image": "/stack/node.svg" },
-    { "title": "cronjob: python", "image": "/stack/python.svg" },
+    { "title": "cronjob: python", "image": "/stack/python.png" },
     { "title": "frontend: next.js", "image": "/stack/next.svg" }
   ];
 
