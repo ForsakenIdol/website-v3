@@ -104,8 +104,8 @@
 .stack {
     --gradient-4: rgba(0, 0, 0, 0.5);
     background: linear-gradient(var(--gradient-4), var(--gradient-4)), url("/stack.jpeg");
-    height: 99vh;
     margin: -2.5em -1em -1.5em;
+    padding-bottom: 5vh;
 }
 
 .stack h2 {
@@ -124,6 +124,10 @@
 /* Stack logos should not animate. To counter this, we set the hover filter to be the same as the default filter. */
 .stack_grid img:hover {
     filter: invert(100%);
+}
+
+.stack_item p {
+    padding: 0 3rem;
 }
 
 .stack, .connect {

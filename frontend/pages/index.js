@@ -44,10 +44,14 @@ function print_repo_data(github) {
 
 function print_stack_items() {
   const content = [
-    { "title": "database: postgresql", "image": "/stack/postgres.svg" },
-    { "title": "middleware: node.js", "image": "/stack/node.svg" },
-    { "title": "cronjob: python", "image": "/stack/python.png" },
-    { "title": "frontend: next.js", "image": "/stack/next.svg" }
+    { "title": "database: postgresql", "image": "/stack/postgres.svg",
+      "description": "Iteration 2 of my personal website had MySQL as the backend database for storing the old Blog and Login information. With iteration 3 (this iteration), I wanted to switch this part of the stack to something used frequently in production web apps - and so I came across PostgreSQL."},
+    { "title": "middleware: express.js", "image": "/stack/node.svg",
+      "description": "Express.js was key to the second iteration of my personal website, and I wanted to keep it in the stack in some form while still experimenting with other technologies. Ultimately, I settled for using Express in the middleware server, abstracting the database and exposing CRUD paths to the cronjob and frontend." },
+    { "title": "cronjob: python", "image": "/stack/python.png",
+      "description": "This website loads public repository data from the GitHub API. It's bad practise to call the API once for every visitor who comes to our site, so we need to pull the data from that API periodically and store it in our database. With both the middleware and frontend in JavaScript (Node.js), I opted for Python to write the cronjob to experiment in data handling (particularly datetime parsing) across different programming languages."},
+    { "title": "frontend: next.js", "image": "/stack/next.svg",
+      "description": "I've had my eye on Next.js for some time now as an alternative to React.js in general and the Express.js / Nunjucks templating stack that formed most of my previous website's iteration. It's a little overkill for a single-page web application, but it's well worth the effort put into learning how this framework operates."}
   ];
 
   const img_size = 100;
@@ -57,6 +61,7 @@ function print_stack_items() {
       <div className={styles.stack_item} key={key_start++}>
         <h3>{e.title}</h3>
         <Image src={e.image} height={img_size} width={img_size} />
+        <p>{e.description}</p>
       </div>
     );
   });
