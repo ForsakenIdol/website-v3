@@ -114,8 +114,15 @@
 .stack {
     --gradient-4: rgba(0, 0, 0, 0.5);
     background: linear-gradient(var(--gradient-4), var(--gradient-4)), url("/stack.jpeg");
-    height: 90vh;
-    margin: 0 -1em;
+    height: 99vh;
+    margin: -2.5em -1em -1.5em;
+}
+
+.stack h2 {
+    font-family: 'Caveat', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 5px;
+    padding-top: 10vh;
 }
 
 .stack, .connect {
