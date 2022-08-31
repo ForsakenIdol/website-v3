@@ -133,19 +133,26 @@ export default function Home({ zen, github }) {
       <div className={styles.projects} id="projects">
         <h2>My Projects</h2>
         <p>Take a look at what I'm currently working on.</p>
-        <hr color='white' />
 
+        <hr color='white' />
         <div className={styles.projects_grid}>
         {/* ID, Name, Description, URL */}
           <b>Repo ID</b>
           <b>Repo Name</b>
           <b>Repo Description</b>
           <b>Repo URL</b>
-          <hr color='white' /><hr color='white' /><hr color='white' /><hr color='white' />
+        </div>
+        <hr color='white' />
+        <div className={styles.projects_grid}>
           {print_repo_data(github)}
         </div>
-
         <hr color='white' />
+
+        <div className={styles.navigate_to_content}>
+          <a href="#stack">
+            <Image src="/down-arrow.svg" height={50} width={50} />
+          </a>
+        </div>
       </div>
 
       <div className={styles.stack} id="stack">
@@ -159,10 +166,10 @@ export default function Home({ zen, github }) {
       <div className={styles.connect} id="connect">
         <h2>Connect With Me</h2>
         <div className={styles.connect_links}>
-          <a href="#"><Image src="/social/github.svg" height={socialIconHeight} width={socialIconWidth} /></a>
-          <a href="#"><Image src="/social/instagram.svg" height={socialIconHeight} width={socialIconWidth} /></a>
-          <a href="#"><Image src="/social/youtube.svg" height={socialIconHeight} width={socialIconWidth} /></a>
-          <a href="#"><Image src="/social/twitch.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+          <a href="https://github.com/ForsakenIdol" target={"_blank"}><Image src="/social/github.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+          <a href="https://www.instagram.com/forsakenidol/"  target={"_blank"}><Image src="/social/instagram.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+          <a href="https://www.youtube.com/channel/UChezO9GdqhTIBN_JU2p35bQ" target={"_blank"}><Image src="/social/youtube.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+          <a href="https://www.twitch.tv/forsakenidol" target={"_blank"}><Image src="/social/twitch.svg" height={socialIconHeight} width={socialIconWidth} /></a>
         </div>
       </div>
 
