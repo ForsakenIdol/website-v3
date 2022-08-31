@@ -28,13 +28,16 @@ function print_repo_data(github) {
   ];
   let elements = []
   for (let i = 0; i < github.response.rows.length; i++) {
+    // Key props so React.js doesn't scream at me
+    let key_props = [1000000000 + github.response.rows[i].repo_id, 2000000000 + github.response.rows[i].repo_id,
+                     3000000000 + github.response.rows[i].repo_id, 4000000000 + github.response.rows[i].repo_id]
     // Skip private repositories
     if (github.response.rows[i].private) continue;
     /* ID, Name, Description, URL */
-    elements.push(<p>{github.response.rows[i].repo_id}</p>);
-    elements.push(<p>{github.response.rows[i].repo_name}</p>);
-    elements.push(<p>{github.response.rows[i].description}</p>);
-    elements.push(<a href={github.response.rows[i].url} target="_blank">Link</a>);
+    elements.push(<p key={key_props[0]}>{github.response.rows[i].repo_id}</p>);
+    elements.push(<p key={key_props[1]}>{github.response.rows[i].repo_name}</p>);
+    elements.push(<p key={key_props[2]}>{github.response.rows[i].description}</p>);
+    elements.push(<a key={key_props[3]} href={github.response.rows[i].url} target="_blank">Link</a>);
   }
   return elements;
 }
