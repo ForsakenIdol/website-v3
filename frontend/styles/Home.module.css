@@ -78,7 +78,7 @@
     margin: 0 -1em;
     /* We use padding here because we want the invisible border to be on the edge of the splash element,
        while the main text content moves more towards the middle. */
-    padding: 5vh 20vw;
+    padding: 5vh 20vw 1vh;
 }
 
 .projects {
@@ -111,12 +111,22 @@
     margin: 15px 0 10px;
 }
 
+.stack {
+    --gradient-4: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(var(--gradient-4), var(--gradient-4)), url("/stack.jpeg");
+    height: 90vh;
+    margin: 0 -1em;
+}
+
+.stack, .connect {
+    text-align: center;
+}
+
 .connect {
-    --gradient-4: rgba(0, 0, 0, 0.2);
-    background: linear-gradient(var(--gradient-4), var(--gradient-4)), url("/connect.jpeg");
+    --gradient-5: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(var(--gradient-5), var(--gradient-5)), url("/connect.jpeg");
     background-size: 100%;
     background-attachment: fixed;
-    text-align: center;
     margin: 0 -1em;
 }
 

@@ -3,7 +3,7 @@
 
 :root {
     /* Declaring variables at the top level */
-    --gradient-1: rgba(0, 0, 0, 0.5);
+    --gradient-1: rgba(0, 0, 0, 0.3);
 }
 
 html {
