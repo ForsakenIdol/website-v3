@@ -42,6 +42,28 @@ function print_repo_data(github) {
   return elements;
 }
 
+function print_stack_items() {
+  const content = [
+    { "title": "database: postgresql", "image": "/stack/postgres.svg" },
+    { "title": "middleware: node.js", "image": "/stack/node.svg" },
+    { "title": "cronjob: python", "image": "/stack/python.svg" },
+    { "title": "frontend: next.js", "image": "/stack/next.svg" }
+  ];
+
+  const img_size = 100;
+  let key_start = 98765;
+  const elements = content.map(e => {
+    return (
+      <div className={styles.stack_item} key={key_start++}>
+        <h3>{e.title}</h3>
+        <Image src={e.image} height={img_size} width={img_size} />
+      </div>
+    );
+  });
+
+  return elements;
+}
+
 export default function Home({ zen, github }) {
 
   const socialIconWidth = 30;
@@ -89,9 +111,10 @@ export default function Home({ zen, github }) {
       <div className={styles.bio} id="bio">
         <h2>About Me</h2>
         <hr color='white' />
+        <b>Welcome to my portion of the internet.</b>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed nulla varius, vulputate lectus at, ornare tortor. Mauris non malesuada elit. Aliquam vulputate sapien in lorem tristique ultrices. Nullam porttitor turpis ac varius tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras vitae eros vel ex gravida bibendum. Quisque venenatis consequat tempor. Curabitur suscipit diam ac vehicula iaculis. Vivamus quis nibh pellentesque dui mollis semper in quis purus. Phasellus quis rutrum est. Suspendisse iaculis non quam a malesuada. Ut dignissim sit amet est aliquet elementum. Pellentesque sed enim mollis, pretium enim vitae, efficitur sem. Suspendisse in augue euismod, viverra turpis eget, rhoncus nunc.</p>
         <p>Mauris porttitor congue sollicitudin. Curabitur metus sapien, sagittis quis suscipit sed, convallis vel nibh. Nullam tincidunt pharetra rutrum. Quisque vel diam eget lorem consectetur porttitor eu a felis. Cras laoreet convallis augue, ut vulputate sem placerat quis. Phasellus dignissim elit nec leo interdum egestas. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras condimentum ultrices dolor, sit amet ullamcorper tortor. In eu scelerisque eros. Phasellus volutpat molestie eleifend. Quisque a facilisis diam, et luctus est. Nunc enim augue, malesuada in rutrum a, posuere sit amet leo.</p>
-        <p>Morbi dictum consectetur risus quis tincidunt. Vivamus risus augue, facilisis sit amet gravida eget, molestie nec risus. Integer metus libero, egestas malesuada nulla non, sodales finibus lectus. Duis a dolor ultrices, auctor enim quis, porta nunc. In ut rhoncus est. Donec posuere quam tellus, id condimentum nisi varius at. Etiam pulvinar scelerisque urna, et ornare eros feugiat non. Nulla pulvinar, urna quis venenatis congue, odio dui dictum lectus, eget eleifend metus metus vel elit.</p>
+        <p>Morbi dictum consectetur risus quis tincidunt. Vivamus risus augue, facilisis sit amet gravida eget, molestie nec risus. Integer metus libero, egestas malesuada nulla non, sodales finibus lectus.</p>
         <hr color='white' style={{ marginBottom: "7vh" }}/>
 
         <div className={styles.navigate_to_content}>
@@ -122,7 +145,10 @@ export default function Home({ zen, github }) {
 
       <div className={styles.stack} id="stack">
         <h2>Stack</h2>
-        <p>The technologies and frameworks that power this website.</p>
+        <p className={styles.emphasis} style={{ fontWeight: "bold" }} id="stack-emphasis">The technologies and frameworks that power this website.</p>
+        <div className={styles.stack_grid}>
+          {print_stack_items()}
+        </div>
       </div>
 
       <div className={styles.connect} id="connect">

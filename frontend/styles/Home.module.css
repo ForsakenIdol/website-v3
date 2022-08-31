@@ -56,16 +56,6 @@
     justify-content: center;
 }
 
-.navigate_to_content img, .connect img {
-    /* The SVG was initially black. We invert it to white. */
-    filter: invert(100%);
-    transition: 250ms;
-}
-
-.navigate_to_content img:hover, .connect img:hover {
-    filter: invert(50%);
-}
-
 /* Below the splash box is my bio section */
 .bio {
     font-family: 'Montserrat', sans-serif;
@@ -123,6 +113,12 @@
     font-size: 3rem;
     letter-spacing: 5px;
     padding-top: 10vh;
+}
+
+.stack_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 7vh;
 }
 
 .stack, .connect {

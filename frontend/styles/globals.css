@@ -21,6 +21,16 @@ body {
     color: white;
 }
 
+img {
+    /* The SVG was initially black. We invert it to white. */
+    filter: invert(100%);
+    transition: 250ms;
+}
+
+img:hover {
+    filter: invert(50%);
+}
+
 h1 {
     font-size: 3rem;
     text-transform: uppercase;
@@ -32,6 +42,13 @@ h2 {
     font-size: 1.8rem;
     text-transform: uppercase;
     letter-spacing: 1.2px;
+}
+
+h3 {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
 }
 
 a {
