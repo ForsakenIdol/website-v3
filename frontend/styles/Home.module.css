@@ -121,6 +121,11 @@
     margin-top: 7vh;
 }
 
+/* Stack logos should not animate. To counter this, we set the hover filter to be the same as the default filter. */
+.stack_grid img:hover {
+    filter: invert(100%);
+}
+
 .stack, .connect {
     text-align: center;
 }
