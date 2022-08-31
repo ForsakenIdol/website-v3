@@ -120,10 +120,12 @@ export default function Home({ zen, github }) {
 
       <div className={styles.connect} id="connect">
         <h2>Connect With Me</h2>
-        <a href="#"><Image src="/social/github.svg" height={socialIconHeight} width={socialIconWidth} /></a>
-        <a href="#"><Image src="/social/instagram.svg" height={socialIconHeight} width={socialIconWidth} /></a>
-        <a href="#"><Image src="/social/youtube.svg" height={socialIconHeight} width={socialIconWidth} /></a>
-        <a href="#"><Image src="/social/twitch.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+        <div className={styles.connect_links}>
+          <a href="#"><Image src="/social/github.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+          <a href="#"><Image src="/social/instagram.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+          <a href="#"><Image src="/social/youtube.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+          <a href="#"><Image src="/social/twitch.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+        </div>
       </div>
 
       {/* JS Scripts */}

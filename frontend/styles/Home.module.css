@@ -111,6 +111,28 @@
     margin: 15px 0 10px;
 }
 
+.connect {
+    --gradient-4: rgba(0, 0, 0, 0.2);
+    background: linear-gradient(var(--gradient-4), var(--gradient-4)), url("/connect.jpeg");
+    background-size: 100%;
+    background-attachment: fixed;
+    text-align: center;
+    margin: 0 -1em;
+}
+
+.connect h2 {
+    padding-top: 5rem;
+}
+
+.connect_links {
+    margin-top: 5vh;
+    padding-bottom: 5rem;
+}
+
+.connect_links a {
+    margin: 0 1vw;
+}
+
 .footer_list {
     display: flex;
     justify-content: space-between;
