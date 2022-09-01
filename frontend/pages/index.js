@@ -18,7 +18,9 @@ export async function getServerSideProps() {
   // Retrieve GitHub project data
   const github_string = "http://" + process.env.DB_SERVER + ":" + process.env.SERVER_PORT + "/get";
   try {
-    const data = await zen.text();
+    let data = await zen.text();
+    // If the first character is "{", it means I've been rate limited to the zen API endpoint.
+    if (data.charAt(0) == "{") data = "Zero Bootstrap and zero client-sided JavaScript.";
     try {
       const github = await fetch(github_string);
       const github_data = await github.json();
