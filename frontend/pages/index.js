@@ -7,19 +7,29 @@ import Typewriter from 'typewriter-effect'
 
 export async function getServerSideProps() {
 
+  // Retrieve GitHub Zen
   const zen = await fetch("https://api.github.com/zen");
-  const data = await zen.text();
-
   // Retrieve GitHub project data
   const github_string = "http://" + process.env.DB_SERVER + ":" + process.env.SERVER_PORT + "/get";
   try {
-    const github = await fetch(github_string);
-    const github_data = await github.json();
-    return { props: { zen: data, github: github_data } }
+    const data = await zen.text();
+    try {
+      const github = await fetch(github_string);
+      const github_data = await github.json();
+      return { props: { zen: data, github: github_data } }
+    } catch (error) {
+      return { props: { zen: data, github: null } }
+    }
   } catch (error) {
-    return { props: { zen: data, github: null } }
+    const data = "Zero Bootstrap and zero client-sided JavaScript.";
+    try {
+      const github = await fetch(github_string);
+      const github_data = await github.json();
+      return { props: { zen: data, github: github_data } }
+    } catch (error) {
+      return { props: { zen: data, github: null } }
+    }
   }
-  
 }
 
 function print_repo_data(github) {
