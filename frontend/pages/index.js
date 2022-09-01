@@ -32,6 +32,21 @@ export async function getServerSideProps() {
   }
 }
 
+function print_navlinks() {
+  const content = [
+    { "text": "Home", "link": "#" },
+    { "text": "About", "link": "#bio" },
+    { "text": "Projects", "link": "#projects" },
+    { "text": "Stack", "link": "#stack" },
+    { "text": "Connect", "link": "#connect" }
+  ];
+  let key_start = 78765;
+  const elements = content.map(e => {
+    return (<li key={key_start++}><a href={e.link}>{e.text}</a></li>);
+  });
+  return elements;
+}
+
 function print_repo_data(github) {
   if (!github) return [
     <p></p>, <p></p>, <p>Could not load GitHub user data. Try again later.</p>
@@ -88,8 +103,9 @@ function print_social_icons() {
     { "href": "https://www.youtube.com/channel/UChezO9GdqhTIBN_JU2p35bQ", "img": "youtube.svg" },
     { "href": "https://www.twitch.tv/forsakenidol", "img": "twitch.svg" }
   ];
+  let key_start = 88765;
   const elements = content.map(e => {
-    return (<a href={e.href} target={"_blank"}><Image src={"/social/" + e.img} height={socialIconHeight} width={socialIconWidth} /></a>);
+    return (<a href={e.href} target={"_blank"} key={key_start++}><Image src={"/social/" + e.img} height={socialIconHeight} width={socialIconWidth} /></a>);
   });
   return elements;
 
@@ -111,11 +127,7 @@ export default function Home({ zen, github }) {
 
         <nav className={styles.navbar}>
           <ul className={styles.navbar_list}>
-            <li><a href="#">Home</a></li>
-            <li><a href="#bio">About</a></li>
-            <li><a href="#projects">Projects</a></li> {/* List of GitHub Projects (possibly with featured projects display) */}
-            <li><a href="#stack">Stack</a></li> {/* Stack used to create the website with explanations as to why */}
-            <li><a href="#connect">Connect</a></li>
+            {print_navlinks()}
           </ul>
         </nav>
 
