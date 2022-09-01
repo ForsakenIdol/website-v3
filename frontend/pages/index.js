@@ -5,6 +5,12 @@ import styles from '../styles/Home.module.css'
 //import Typewriter from 'typewriter-effect/dist/core'
 import Typewriter from 'typewriter-effect'
 
+/*
+ * Environment Variables:
+ * DB_SERVER: Hostname of database server
+ * SERVER_PORT: Port of database server
+ */
+
 export async function getServerSideProps() {
 
   // Retrieve GitHub Zen
