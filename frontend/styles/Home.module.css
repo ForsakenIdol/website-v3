@@ -62,13 +62,17 @@
     --gradient-2: rgba(0, 0, 0, 0.7);
     background: linear-gradient(var(--gradient-2), var(--gradient-2)), url("/bio_greyscale.jpg");
     background-size: cover;
-    min-height: 90vh;
     /* By setting a negative margin horizontally, we can make the bio element stretch slightly past the screen edges.
        We then use padding within the .bio element to move the actual content away from the element's walls. */
     margin: 0 -1em;
     /* We use padding here because we want the invisible border to be on the edge of the splash element,
        while the main text content moves more towards the middle. */
     padding: 5vh 20vw 1vh;
+}
+
+.bio_content {
+    margin-top: 20vh;
+    min-height: 67vh;
 }
 
 .projects {
@@ -117,8 +121,8 @@
 
 .stack_grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 22rem);
-    margin-top: 7vh;
+    grid-template-columns: repeat(auto-fill, clamp(22rem, 22vh, 35rem));
+    margin: 7vh 5vw 0;
 }
 
 /* Stack logos should not animate. To counter this, we set the hover filter to be the same as the default filter. */
@@ -152,7 +156,7 @@
 }
 
 .connect_links a {
-    margin: 0 1vw;
+    margin: 0 0.75vw;
 }
 
 .footer_list {
