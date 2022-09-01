@@ -42,7 +42,13 @@ function print_navlinks() {
   ];
   let key_start = 78765;
   const elements = content.map(e => {
-    return (<li key={key_start++}><a href={e.link}>{e.text}</a></li>);
+    return (
+    <li key={key_start++}>
+      <a href={e.link}>
+        {e.text}
+      </a>
+    </li>
+    );
   });
   return elements;
 }
