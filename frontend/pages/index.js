@@ -69,6 +69,22 @@ function print_stack_items() {
   return elements;
 }
 
+function print_social_icons() {
+  const socialIconWidth = 45;
+  const socialIconHeight = 45;
+  const content = [
+    { "href": "https://github.com/ForsakenIdol", "img": "github.svg" },
+    { "href": "https://www.instagram.com/forsakenidol/", "img": "instagram.svg" },
+    { "href": "https://www.youtube.com/channel/UChezO9GdqhTIBN_JU2p35bQ", "img": "youtube.svg" },
+    { "href": "https://www.twitch.tv/forsakenidol", "img": "twitch.svg" }
+  ];
+  const elements = content.map(e => {
+    return (<a href={e.href} target={"_blank"}><Image src={"/social/" + e.img} height={socialIconHeight} width={socialIconWidth} /></a>);
+  });
+  return elements;
+
+}
+
 export default function Home({ zen, github }) {
 
   const socialIconWidth = 30;
@@ -114,13 +130,15 @@ export default function Home({ zen, github }) {
       </div>
 
       <div className={styles.bio} id="bio">
-        <h2>About Me</h2>
-        <hr color='white' />
-        <b>Welcome to my portion of the internet.</b>
-        <p>I'm an amateur web developer, cloud computing engineer, freelance educator, musician, and hardcore gamer, all rolled up into 1 person - me! Over the last few years, I've been fortunate enough to travel the world, meet some incredible people, and develop a wide range of different experiences. Now, I work for Amazon Web Services in Australia, as a Cloud Support Engineer in the Container Deployment profile.</p>
-        <p>This is iteration 3 of my personal website. You may have seen iteration 1, which was created in Squarespace and used to be available at forsakenidol.me, and iteration 2, which used to be the website at this address - forsakenidol.com. I designed iteration 2 to both cut down on hosting costs and ride the "Web Dev High" that I had back in mid-2020, after completing the first web development unit of my Computer Science degree. Unfortunately, I didn't make a lot of good choices during the design and development process of that iteration, used way too much bootstrap CSS and JavaScript, and there are now a lot of bugs that cannot be reproduced, which is why I wanted to start again from scratch with iteration 3 - no bootstrap, and no client-side scripts.</p> 
-        <p>This entire website runs in a framework known as Kubernetes, which is an open-source container orchestration system that I've been interested in learning for some time. There are 4 different kinds of pods, each housing a single container representing a different part of the tech stack of this website. With iteration 3, I wanted to focus on building my understanding of web development by shifting from the monolithic architecture of iteration 2, to a microservices architecture for the current iteration. This would help me develop different parts of the stack separately and make it easier to adopt a Kubernetes hosting solution.</p>
-        <hr color='white' style={{ marginBottom: "7vh" }}/>
+        <div className={styles.bio_content}>
+          <h2>About Me</h2>
+          <hr color='white' />
+          <b>Welcome to my portion of the internet.</b>
+          <p>I'm an amateur web developer, cloud computing engineer, freelance educator, musician, and hardcore gamer, all rolled up into 1 person - me! Over the last few years, I've been fortunate enough to travel the world, meet some incredible people, and develop a wide range of different experiences. Now, I work for Amazon Web Services in Australia, as a Cloud Support Engineer in the Container Deployment profile.</p>
+          <p>This is iteration 3 of my personal website. You may have seen iteration 1, which was created in Squarespace and used to be available at forsakenidol.me, and iteration 2, which used to be the website at this address - forsakenidol.com. I designed iteration 2 to both cut down on hosting costs and ride the "Web Dev High" that I had back in mid-2020, after completing the first web development unit of my Computer Science degree. Unfortunately, I didn't make a lot of good choices during the design and development process of that iteration, used way too much bootstrap CSS and JavaScript, and there are now a lot of bugs that cannot be reproduced, which is why I wanted to start again from scratch with iteration 3 - no bootstrap, and no client-side scripts.</p> 
+          <p>This entire website runs in a framework known as Kubernetes, which is an open-source container orchestration system that I've been interested in learning for some time. There are 4 different kinds of pods, each housing a single container representing a different part of the tech stack of this website. With iteration 3, I wanted to focus on building my understanding of web development by shifting from the monolithic architecture of iteration 2, to a microservices architecture for the current iteration. This would help me develop different parts of the stack separately and make it easier to adopt a Kubernetes hosting solution.</p>
+          <hr color='white' style={{ marginBottom: "7vh" }}/>
+        </div>
 
         <div className={styles.navigate_to_content}>
           <a href="#projects">
@@ -166,10 +184,7 @@ export default function Home({ zen, github }) {
       <div className={styles.connect} id="connect">
         <h2>Connect With Me</h2>
         <div className={styles.connect_links}>
-          <a href="https://github.com/ForsakenIdol" target={"_blank"}><Image src="/social/github.svg" height={socialIconHeight} width={socialIconWidth} /></a>
-          <a href="https://www.instagram.com/forsakenidol/"  target={"_blank"}><Image src="/social/instagram.svg" height={socialIconHeight} width={socialIconWidth} /></a>
-          <a href="https://www.youtube.com/channel/UChezO9GdqhTIBN_JU2p35bQ" target={"_blank"}><Image src="/social/youtube.svg" height={socialIconHeight} width={socialIconWidth} /></a>
-          <a href="https://www.twitch.tv/forsakenidol" target={"_blank"}><Image src="/social/twitch.svg" height={socialIconHeight} width={socialIconWidth} /></a>
+          {print_social_icons()}
         </div>
       </div>
 
