@@ -142,7 +142,7 @@
     --gradient-5: rgba(0, 0, 0, 0.7);
     background: linear-gradient(var(--gradient-5), var(--gradient-5)), url("/connect.jpeg");
     background-size: 100%;
-    background-attachment: fixed;
+    background-position-y: 85%;
     margin: 0 -1em;
 }
 
