@@ -55,7 +55,7 @@ function print_navlinks() {
 
 function print_repo_data(github) {
   if (!github) return [
-    <p></p>, <p></p>, <p>Could not load GitHub user data. Try again later.</p>
+    <p key={68765}></p>, <p key={68766}></p>, <p key={68767}>Could not load GitHub user data. Try again later.</p>
   ];
   let elements = []
   for (let i = 0; i < github.response.rows.length; i++) {
@@ -68,7 +68,7 @@ function print_repo_data(github) {
     elements.push(<p key={key_props[0]}>{github.response.rows[i].repo_id}</p>);
     elements.push(<p key={key_props[1]}>{github.response.rows[i].repo_name}</p>);
     elements.push(<p key={key_props[2]}>{github.response.rows[i].description}</p>);
-    elements.push(<a key={key_props[3]} href={github.response.rows[i].url} target="_blank">Link</a>);
+    elements.push(<a key={key_props[3]} href={github.response.rows[i].url} target="_blank" rel='noreferrer'>Link</a>);
   }
   return elements;
 }
@@ -91,7 +91,7 @@ function print_stack_items() {
     return (
       <div className={styles.stack_item} key={key_start++}>
         <h3>{e.title}</h3>
-        <Image src={e.image} height={img_size} width={img_size} />
+        <Image src={e.image} height={img_size} width={img_size} alt="Stack item" />
         <p>{e.description}</p>
       </div>
     );
@@ -111,7 +111,7 @@ function print_social_icons() {
   ];
   let key_start = 88765;
   const elements = content.map(e => {
-    return (<a href={e.href} target={"_blank"} key={key_start++}><Image src={"/social/" + e.img} height={socialIconHeight} width={socialIconWidth} /></a>);
+    return (<a href={e.href} target={"_blank"} rel='noreferrer' key={key_start++}><Image src={"/social/" + e.img} height={socialIconHeight} width={socialIconWidth} alt="social icon" /></a>);
   });
   return elements;
 
@@ -148,7 +148,7 @@ export default function Home({ zen, github }) {
 
         <div className={styles.navigate_to_content}>
           <a href="#bio">
-            <Image src="/down-arrow.svg" height={50} width={50} />
+            <Image src="/down-arrow.svg" height={50} width={50} alt="down arrow" />
           </a>
         </div>
 
@@ -167,7 +167,7 @@ export default function Home({ zen, github }) {
 
         <div className={styles.navigate_to_content}>
           <a href="#projects">
-            <Image src="/down-arrow.svg" height={50} width={50} />
+            <Image src="/down-arrow.svg" height={50} width={50} alt="down arrow" />
           </a>
         </div>
 
@@ -193,7 +193,7 @@ export default function Home({ zen, github }) {
 
         <div className={styles.navigate_to_content}>
           <a href="#stack">
-            <Image src="/down-arrow.svg" height={50} width={50} />
+            <Image src="/down-arrow.svg" height={50} width={50} alt="down arrow" />
           </a>
         </div>
       </div>
