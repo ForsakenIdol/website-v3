@@ -38,6 +38,7 @@
     flex-direction: column; /* Successive elements will be placed underneath the previous one. */
     justify-content: center;  /* Vertical Centering */
     align-items: center; /* Horizontal Centering */
+    text-align: center; /* On smaller screens (e.g. mobile), centers the overflow. */
     height: 80vh;
 }
 
