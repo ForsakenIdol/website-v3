@@ -87,9 +87,6 @@ function print_social_icons() {
 
 export default function Home({ zen, github }) {
 
-  const socialIconWidth = 30;
-  const socialIconHeight = 30;
-
   return (
     <div>
       <Head>
