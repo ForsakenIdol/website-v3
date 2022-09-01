@@ -58,6 +58,9 @@
 
 /* Below the splash box is my bio section */
 .bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Montserrat', sans-serif;
     --gradient-2: rgba(0, 0, 0, 0.7);
     background: linear-gradient(var(--gradient-2), var(--gradient-2)), url("/bio_greyscale.jpg");
@@ -67,12 +70,12 @@
     margin: 0 -1em;
     /* We use padding here because we want the invisible border to be on the edge of the splash element,
        while the main text content moves more towards the middle. */
-    padding: 5vh 20vw 1vh;
+    padding: 0 20vw;
 }
 
 .bio_content {
-    margin-top: 20vh;
-    min-height: 67vh;
+    margin-top: 5vh;
+    max-width: 65rem;
 }
 
 .projects {
