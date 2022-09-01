@@ -175,7 +175,7 @@ export default function Home({ zen, github }) {
 
       <div className={styles.projects} id="projects">
         <h2>My Projects</h2>
-        <p>Take a look at what I'm currently working on. Check out my <a href='https://github.com/ForsakenIdol' target={'_blank'}>Github</a> for everything else!</p>
+        <p>Take a look at what I'm currently working on. Check out my <a href='https://github.com/ForsakenIdol' target={'_blank'} rel="noreferrer">Github</a> for everything else!</p>
 
         <hr color='white' />
         <div className={styles.projects_grid}>
