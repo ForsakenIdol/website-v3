@@ -1,0 +1,66 @@
+# The frontend is the only part of the website stack that is exposed.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: website
+  name: dep-frontend
+spec:
+  selector:
+    matchLabels:
+      app: pod-frontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: pod-frontend
+    spec:
+      containers:
+      - name: container-frontend
+        image: lachldwaws/next_frontend
+        imagePullPolicy: Always
+        env:
+        - name: DB_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: cronmap
+              key: server_hostname
+        - name: SERVER_PORT
+          value: "9001"
+        - name: NODE_ENV
+          value: "production"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: website
+  name: frontend-service
+spec:
+  selector:
+    app: pod-frontend
+  ports:
+    - protocol: TCP
+      port: 9002
+      targetPort: 3000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: website
+  name: frontend-ingress
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: frontend-service
+              port:
+                number: 9002
+---
