@@ -28,6 +28,8 @@ spec:
             secretKeyRef:
               name: postgres-credentials
               key: POSTGRES_PASSWORD
+        - name: NODE_ENV
+          value: "production"
 ---
 # We abandon the service naming convention from the Postgres service and opt for a simpler service name here: "db-server.website".
 apiVersion: v1
