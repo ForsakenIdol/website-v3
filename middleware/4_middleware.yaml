@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: container-middleware
-        image: lachldwaws/pgsql_server:1.1
+        image: forsakenidol/middleware
         imagePullPolicy: Always
         env:
         - name: PGHOST

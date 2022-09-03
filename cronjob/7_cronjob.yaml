@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
           - name: github-container
-            image: lachldwaws/python_cronjob
+            image: forsakenidol/cronjob
             imagePullPolicy: IfNotPresent
             env:
             - name: GITHUB_PAN
