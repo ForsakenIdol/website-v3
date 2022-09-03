@@ -4,6 +4,20 @@ This repository contains all the project files for the third iteration of my web
 
 Created by **lachldw** at AWS.
 
+## HTTPS Process
+
+1. Request a certificate for domainname.com, *.domainname.com, and www.domainname.com
+2. Create the relevant CNAME records (in Route53 for AWS domains) to complete the certificate validation process.
+3. Create 2 A name records (domainname.com (root) and www.domainname.com) to point at the ALB.
+    a. NOTE: The root record will take time to propagate. Give it about 15 minutes.
+4. Define the following 3 annotations on the Ingress object fronting the ALB.
+```
+alb.ingress.kubernetes.io/certificate-arn: <ARN_of_ACM_certificate_for_the_domain_fronting_this_ALB>
+alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+alb.ingress.kubernetes.io/ssl-redirect: '443'
+```
+5. Wait a few minutes. Done!
+
 ## Framework Stack
 
 There will be 4 main components to my website and each component will serve a different purpose. In terms of the development phases, this will also serve as the order in which each component should be designed, from 1 to 4.
