@@ -18,6 +18,12 @@ alb.ingress.kubernetes.io/ssl-redirect: '443'
 ```
 5. Wait a few minutes. Done!
 
+## For Domains External to Route53
+
+a. Create the hosted zone in Route53.
+b. Take the NS entries and populate them as custom nameservers. Leave the SOA entry alone.
+c. Follow the steps in **HTTPS Process** above.
+
 ## Framework Stack
 
 There will be 4 main components to my website and each component will serve a different purpose. In terms of the development phases, this will also serve as the order in which each component should be designed, from 1 to 4.
