@@ -5,6 +5,8 @@ metadata:
   name: github-cronjob
 spec:
   schedule: "* * * * *"
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
