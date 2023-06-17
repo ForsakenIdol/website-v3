@@ -10,6 +10,9 @@ spec:
   jobTemplate:
     spec:
       template:
+        metadata:
+          labels:
+            infrastructure: fargate
         spec:
           containers:
           - name: github-container
