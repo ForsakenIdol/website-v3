@@ -4,8 +4,8 @@ metadata:
   namespace: website
   name: github-cronjob
 spec:
-  # Every minute is unnecessary. We set this to every 5 minutes.
-  schedule: "*/5 * * * *"
+  # Every minute is unnecessary. We set this to every 30 minutes, or twice an hour.
+  schedule: "*/30 * * * *"
   successfulJobsHistoryLimit: 0
   failedJobsHistoryLimit: 1
   jobTemplate:
@@ -33,5 +33,6 @@ spec:
                   # Specify the key associated with the value
                   key: server_hostname
           # A pod that enters a restart loop in Fargate will consume A LOT of serverless compute capacity.
-          # Setting the restart policy to "Never" ensures that 1 execution per minute remains the same.
+          # Setting the restart policy to "Never" ensures that 2 executions per hour remains the same.
+          # Self note - this doesn't appear to work properly...
           restartPolicy: Never
