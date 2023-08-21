@@ -37,18 +37,18 @@ data:
     );
 ---
 # Persistent Volume Claim for the Postgres container.
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  namespace: website
-  name: pg-claim
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: gp2
-  resources:
-    requests:
-      storage: 1Gi
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  namespace: website
+#  name: pg-claim
+#spec:
+#  accessModes:
+#    - ReadWriteOnce
+#  storageClassName: gp2
+#  resources:
+#    requests:
+#      storage: 1Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -80,24 +80,28 @@ spec:
           value: "website"
           # We need to specify a different directory for the postgresql files than the default if we want to mount a volume
           # to the /var/lib/postgresql/data directory.
-        - name: PGDATA
-          value: /var/lib/postgresql/data/pgdata
+#        - name: PGDATA
+#          value: /var/lib/postgresql/data/pgdata
         ports:
         - containerPort: 5432
           name: postgres-port
         volumeMounts:
+
           # This name is the name of the volume below. This is not arbitrary.
-        - name: database-storage
+#        - name: database-storage
           # The mount path is where the postgres database is stored by default.
-          mountPath: /var/lib/postgresql/data
+#          mountPath: /var/lib/postgresql/data
+
           # This db script will be run in the POSTGRES_DB database we specified above.
         - name: database-initialization-script
           mountPath: /docker-entrypoint-initdb.d/config.sql
           subPath: config.sql
       volumes:
-      - name: database-storage
-        persistentVolumeClaim:
-          claimName: pg-claim
+
+#      - name: database-storage
+#        persistentVolumeClaim:
+#          claimName: pg-claim
+
       - name: database-initialization-script
         configMap:
             name: database-initialization-script
